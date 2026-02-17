@@ -8,10 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
 
-        /* Nav — fully transparent, no white band */
+        /* Nav — transparent at top, white once scrolled */
         nav {
             background: transparent !important;
             backdrop-filter: none !important;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(5px) !important;
         }
 
         .back-link {
@@ -332,6 +337,16 @@
 
     <script src="script.js"></script>
     <script>
+        // Nav becomes white once user scrolls past the hero area
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
         const dotsContainer = document.getElementById('dots');
