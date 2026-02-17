@@ -8,36 +8,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
 
-        /* Nav — transparent at top, white once scrolled */
-        nav {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            transition: background 0.4s ease, backdrop-filter 0.4s ease;
-        }
-        nav.scrolled {
-            background: rgba(255,255,255,0.85) !important;
-            backdrop-filter: blur(5px) !important;
-        }
+        /* Hide the main nav entirely on this page */
+        nav { display: none !important; }
 
-        .back-link {
-            display: block;
+        /* Minimal close button — fixed top right, always visible */
+        .close-btn {
+            position: fixed;
+            top: 36px;
+            right: 5%;
+            z-index: 1000;
             text-decoration: none;
             color: #111;
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
-            padding: 140px 5% 0;
-            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.45;
             transition: opacity 0.3s ease;
         }
-        .back-link:hover { opacity: 1; }
-        .back-link::before { content: '← '; }
+        .close-btn:hover { opacity: 1; }
+        .close-x {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1;
+        }
 
         .project-intro {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            padding: 60px 5% 80px;
+            padding: 80px 5% 80px;
             align-items: end;
         }
 
@@ -153,9 +155,7 @@
         }
 
         .viewer-prev:hover .viewer-prev-label,
-        .viewer-next:hover .viewer-next-label {
-            color: #fff;
-        }
+        .viewer-next:hover .viewer-next-label { color: #fff; }
 
         .arrow {
             width: 36px;
@@ -189,7 +189,6 @@
             transform: rotate(45deg);
         }
 
-        /* Counter */
         .viewer-counter {
             position: absolute;
             bottom: 50px;
@@ -202,7 +201,6 @@
             font-weight: 300;
         }
 
-        /* Dots */
         .viewer-dots {
             position: absolute;
             bottom: 20px;
@@ -237,6 +235,7 @@
 </head>
 <body>
 
+    <!-- Nav hidden, replaced with minimal close button -->
     <nav>
         <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
         <div class="nav-links">
@@ -246,7 +245,10 @@
         </div>
     </nav>
 
-    <a class="back-link reveal" href="index.html#projects">Back to Projects</a>
+    <a class="close-btn" href="index.html#projects">
+        <span class="close-x">&#x2715;</span>
+        <span>Close</span>
+    </a>
 
     <section class="reveal">
         <div class="project-intro">
@@ -298,7 +300,6 @@
         <div class="viewer-slide"><img src="images/6-dover-park/untitled-2279.webp" alt="Bedroom corner"></div>
         <div class="viewer-slide"><img src="images/6-dover-park/untitled-2248.webp" alt="Living room detail"></div>
 
-        <!-- Left half — go back -->
         <div class="viewer-prev" onclick="changeImage(-1)">
             <div class="viewer-prev-label">
                 <span class="arrow arrow-left"></span>
@@ -306,7 +307,6 @@
             </div>
         </div>
 
-        <!-- Right half — go forward -->
         <div class="viewer-next" onclick="changeImage(1)">
             <div class="viewer-next-label">
                 <span>Next</span>
@@ -337,23 +337,12 @@
 
     <script src="script.js"></script>
     <script>
-        // Nav becomes white once user scrolls past the hero area
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
         const dotsContainer = document.getElementById('dots');
         const total = slides.length;
         let current = 0;
 
-        // Build dots
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.className = 'viewer-dot' + (i === 0 ? ' active' : '');
@@ -372,7 +361,6 @@
             counter.textContent = pad(current + 1) + ' / ' + pad(total);
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') changeImage(1);
             if (e.key === 'ArrowLeft') changeImage(-1);
