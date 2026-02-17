@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Dover Park | Atelier Twenty Four</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #111;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 140px 5% 0;
+            display: block;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        .back-link:hover { opacity: 1; }
+        .back-link::before {
+            content: '← ';
+        }
+
+        .project-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 60px 5% 80px;
+            align-items: end;
+        }
+
+        .project-title-block h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .project-title-block h2 em {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .project-details-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 40px;
+            padding-bottom: 8px;
+        }
+
+        .detail-item span {
+            display: block;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .detail-item p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .project-brief {
+            padding: 0 5% 100px;
+            max-width: 680px;
+        }
+
+        .project-brief p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: #444;
+            letter-spacing: 0.2px;
+        }
+
+        /* Image viewer */
+        .image-viewer {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+            cursor: pointer;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .viewer-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .viewer-slide.active {
+            opacity: 1;
+        }
+
+        .viewer-slide img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .viewer-hint {
+            position: absolute;
+            bottom: 50px;
+            right: 5%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            opacity: 0.9;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .viewer-hint.hidden { opacity: 0; }
+
+        .hint-text {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #fff;
+        }
+
+        .hint-arrow {
+            width: 36px;
+            height: 1px;
+            background: #fff;
+            position: relative;
+        }
+
+        .hint-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 7px;
+            height: 7px;
+            border-right: 1px solid #fff;
+            border-top: 1px solid #fff;
+            transform: rotate(45deg);
+        }
+
+        .viewer-counter {
+            position: absolute;
+            bottom: 50px;
+            left: 5%;
+            z-index: 10;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+        }
+
+        .viewer-dots {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .viewer-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            transition: background 0.4s ease, transform 0.4s ease;
+        }
+
+        .viewer-dot.active {
+            background: #fff;
+            transform: scale(1.4);
+        }
+
+        @media (max-width: 800px) {
+            .project-intro { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+            .image-viewer { height: 70vh; }
+            .project-title-block h2 { font-size: 2.8rem; }
+            .viewer-hint { bottom: 30px; }
+            .viewer-counter { bottom: 30px; }
+            .viewer-dots { bottom: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <a class="back-link reveal" href="index.html#projects">Back to Projects</a>
+
+    <section class="reveal">
+        <div class="project-intro">
+            <div class="project-title-block">
+                <h2>6 Dover<br><em>Park.</em></h2>
+            </div>
+            <div class="project-details-block">
+                <div class="detail-item">
+                    <span>Category</span>
+                    <p>Residential</p>
+                </div>
+                <div class="detail-item">
+                    <span>Location</span>
+                    <p>Kolkata</p>
+                </div>
+                <div class="detail-item">
+                    <span>Scope</span>
+                    <p>Interior Design &amp; Architecture</p>
+                </div>
+                <div class="detail-item">
+                    <span>Year</span>
+                    <p>2021</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-brief">
+            <p>A layered dialogue between heritage and modernity, 6 Dover Park weaves teak joinery, hand-curated antiques, and textured lime plaster into a home that breathes with memory. Across three floors and an open terrace, each space unfolds with quiet intention — from the dramatic wrought-iron entry gate to the double-height stairwell crowned in tropical light, every detail is a considered act of living.</p>
+        </div>
+    </section>
+
+    <div class="image-viewer" id="viewer" onclick="nextImage()">
+
+        <div class="viewer-slide active"><img src="images/6-dover-park/IMG_0215-HDR.webp" alt="Living room"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0202-HDR.webp" alt="Foyer"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0194-HDR.webp" alt="Staircase"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0129-HDR.webp" alt="Kitchen and stair"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0117-HDR.webp" alt="Open plan living"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0077-HDR.webp" alt="Four-poster bedroom"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0002-HDR.webp" alt="Bathroom"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2369-1.webp" alt="Terrace exterior"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2349-1.webp" alt="Terrace view"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2330.webp" alt="Interior space"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2319.webp" alt="Living area"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2306.webp" alt="Room detail"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2300.webp" alt="Terrace colonnade"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2299.webp" alt="Checkerboard terrace"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2297.webp" alt="Master bedroom"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2279.webp" alt="Bedroom corner"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2248.webp" alt="Living room detail"></div>
+
+        <div class="viewer-counter" id="counter">01 / 17</div>
+
+        <div class="viewer-hint" id="hint">
+            <span class="hint-text">Click to explore</span>
+            <span class="hint-arrow"></span>
+        </div>
+
+        <div class="viewer-dots" id="dots"></div>
+    </div>
+
+    <footer id="contact">
+        <div class="contact-info">
+            <p>Inquiries: hello@ateliertwentyfour.com</p>
+            <p>Phone: +1 (234) 567-8910</p>
+        </div>
+        <div class="social-links">
+            <a href="https://instagram.com/ateliertwentyfour" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+                Instagram
+            </a>
+            <a href="https://pinterest.com/ateliertwentyfour" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest">
+                Pinterest
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const slides = document.querySelectorAll('.viewer-slide');
+        const counter = document.getElementById('counter');
+        const hint = document.getElementById('hint');
+        const dotsContainer = document.getElementById('dots');
+        const total = slides.length;
+        let current = 0;
+        let hintDismissed = false;
+
+        // Build dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'viewer-dot' + (i === 0 ? ' active' : '');
+            dotsContainer.appendChild(dot);
+        });
+
+        function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+        function nextImage() {
+            const dots = document.querySelectorAll('.viewer-dot');
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (current + 1) % total;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            counter.textContent = pad(current + 1) + ' / ' + pad(total);
+            if (!hintDismissed) {
+                hint.classList.add('hidden');
+                hintDismissed = true;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextImage();
+        });
+    </script>
+
+</body>
+</html>
