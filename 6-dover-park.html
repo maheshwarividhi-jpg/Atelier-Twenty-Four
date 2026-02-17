@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
+
+        /* Nav — fully transparent, no white band */
+        nav {
+            background: transparent !important;
+            backdrop-filter: none !important;
+        }
+
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            display: block;
             text-decoration: none;
             color: #111;
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
             padding: 140px 5% 0;
-            display: block;
             opacity: 0.6;
             transition: opacity 0.3s ease;
         }
         .back-link:hover { opacity: 1; }
-        .back-link::before {
-            content: '← ';
-        }
+        .back-link::before { content: '← '; }
 
         .project-intro {
             display: grid;
@@ -89,7 +91,6 @@
             width: 100%;
             height: 90vh;
             overflow: hidden;
-            cursor: pointer;
             background: #111;
             display: flex;
             align-items: center;
@@ -106,9 +107,7 @@
             justify-content: center;
         }
 
-        .viewer-slide.active {
-            opacity: 1;
-        }
+        .viewer-slide.active { opacity: 1; }
 
         .viewer-slide img {
             max-width: 100%;
@@ -119,51 +118,78 @@
             display: block;
         }
 
-        .viewer-hint {
+        /* Prev / Next click zones */
+        .viewer-prev,
+        .viewer-next {
             position: absolute;
-            bottom: 50px;
-            right: 5%;
+            top: 0;
+            bottom: 0;
+            width: 50%;
             z-index: 10;
+            cursor: pointer;
             display: flex;
-            align-items: center;
-            gap: 14px;
-            opacity: 0.9;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
+            align-items: flex-end;
+            padding-bottom: 50px;
         }
 
-        .viewer-hint.hidden { opacity: 0; }
+        .viewer-prev { left: 0; justify-content: flex-start; padding-left: 5%; }
+        .viewer-next { right: 0; justify-content: flex-end; padding-right: 5%; }
 
-        .hint-text {
+        .viewer-prev-label,
+        .viewer-next-label {
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .viewer-prev:hover .viewer-prev-label,
+        .viewer-next:hover .viewer-next-label {
             color: #fff;
         }
 
-        .hint-arrow {
+        .arrow {
             width: 36px;
             height: 1px;
-            background: #fff;
+            background: currentColor;
             position: relative;
+            flex-shrink: 0;
         }
 
-        .hint-arrow::after {
+        .arrow-left::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -3px;
+            width: 7px;
+            height: 7px;
+            border-left: 1px solid currentColor;
+            border-top: 1px solid currentColor;
+            transform: rotate(-45deg);
+        }
+
+        .arrow-right::after {
             content: '';
             position: absolute;
             right: 0;
             top: -3px;
             width: 7px;
             height: 7px;
-            border-right: 1px solid #fff;
-            border-top: 1px solid #fff;
+            border-right: 1px solid currentColor;
+            border-top: 1px solid currentColor;
             transform: rotate(45deg);
         }
 
+        /* Counter */
         .viewer-counter {
             position: absolute;
             bottom: 50px;
-            left: 5%;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 10;
             font-size: 0.65rem;
             letter-spacing: 2px;
@@ -171,9 +197,10 @@
             font-weight: 300;
         }
 
+        /* Dots */
         .viewer-dots {
             position: absolute;
-            bottom: 28px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
@@ -198,9 +225,8 @@
             .project-intro { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
             .image-viewer { height: 70vh; }
             .project-title-block h2 { font-size: 2.8rem; }
-            .viewer-hint { bottom: 30px; }
-            .viewer-counter { bottom: 30px; }
-            .viewer-dots { bottom: 14px; }
+            .viewer-prev-label span,
+            .viewer-next-label span { display: none; }
         }
     </style>
 </head>
@@ -247,7 +273,7 @@
         </div>
     </section>
 
-    <div class="image-viewer" id="viewer" onclick="nextImage()">
+    <div class="image-viewer" id="viewer">
 
         <div class="viewer-slide active"><img src="images/6-dover-park/IMG_0215-HDR.webp" alt="Living room"></div>
         <div class="viewer-slide"><img src="images/6-dover-park/IMG_0202-HDR.webp" alt="Foyer"></div>
@@ -267,13 +293,23 @@
         <div class="viewer-slide"><img src="images/6-dover-park/untitled-2279.webp" alt="Bedroom corner"></div>
         <div class="viewer-slide"><img src="images/6-dover-park/untitled-2248.webp" alt="Living room detail"></div>
 
-        <div class="viewer-counter" id="counter">01 / 17</div>
-
-        <div class="viewer-hint" id="hint">
-            <span class="hint-text">Click to explore</span>
-            <span class="hint-arrow"></span>
+        <!-- Left half — go back -->
+        <div class="viewer-prev" onclick="changeImage(-1)">
+            <div class="viewer-prev-label">
+                <span class="arrow arrow-left"></span>
+                <span>Prev</span>
+            </div>
         </div>
 
+        <!-- Right half — go forward -->
+        <div class="viewer-next" onclick="changeImage(1)">
+            <div class="viewer-next-label">
+                <span>Next</span>
+                <span class="arrow arrow-right"></span>
+            </div>
+        </div>
+
+        <div class="viewer-counter" id="counter">01 / 17</div>
         <div class="viewer-dots" id="dots"></div>
     </div>
 
@@ -298,11 +334,9 @@
     <script>
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
-        const hint = document.getElementById('hint');
         const dotsContainer = document.getElementById('dots');
         const total = slides.length;
         let current = 0;
-        let hintDismissed = false;
 
         // Build dots
         slides.forEach((_, i) => {
@@ -313,22 +347,20 @@
 
         function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-        function nextImage() {
+        function changeImage(dir) {
             const dots = document.querySelectorAll('.viewer-dot');
             slides[current].classList.remove('active');
             dots[current].classList.remove('active');
-            current = (current + 1) % total;
+            current = (current + dir + total) % total;
             slides[current].classList.add('active');
             dots[current].classList.add('active');
             counter.textContent = pad(current + 1) + ' / ' + pad(total);
-            if (!hintDismissed) {
-                hint.classList.add('hidden');
-                hintDismissed = true;
-            }
         }
 
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') nextImage();
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'ArrowLeft') changeImage(-1);
         });
     </script>
 
