@@ -14,57 +14,126 @@
             right: 5%;
             z-index: 1000;
             text-decoration: none;
-            color: #111;
+            color: #fff;
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
             display: flex;
             align-items: center;
             gap: 10px;
-            opacity: 0.45;
+            opacity: 0.6;
             transition: opacity 0.3s ease;
+            mix-blend-mode: difference;
         }
         .close-btn:hover { opacity: 1; }
         .close-x { font-size: 1.2rem; font-weight: 300; line-height: 1; }
-        .project-intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            padding: 80px 5% 80px;
-            align-items: end;
+        
+        .hero-banner {
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+            position: relative;
         }
-        .project-title-block h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-weight: 400;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-        }
-        .project-title-block h2 em { font-style: italic; font-weight: 500; }
-        .project-details-block {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px 40px;
-            padding-bottom: 8px;
-        }
-        .detail-item span {
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            font-size: 0.6rem;
+        }
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 5% 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+        }
+        .hero-overlay h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .hero-overlay .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .project-info-band {
+            width: 100%;
+            background: #fff;
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .info-left {
+            max-width: 500px;
+        }
+        
+        .info-left h3 {
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
             color: #888;
-            margin-bottom: 6px;
+            margin-bottom: 30px;
+            font-weight: 400;
         }
-        .detail-item p { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.3px; }
-        .project-brief { padding: 0 5% 100px; max-width: 680px; }
-        .project-brief p {
+        
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding-left: 20px;
+        }
+        .detail-item span {
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .detail-item p { 
+            font-size: 1.05rem; 
+            font-weight: 300; 
+            letter-spacing: 0.3px;
+            color: #111;
+        }
+        
+        .info-right {
+            max-width: 650px;
+        }
+        
+        .info-right h3 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #888;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .info-right p {
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.85;
             color: #444;
             letter-spacing: 0.2px;
+            margin-bottom: 1.5em;
         }
+        .info-right p:last-child {
+            margin-bottom: 0;
+        }
+        
         .image-viewer {
             position: relative;
             width: 100%;
@@ -169,10 +238,10 @@
             transition: background 0.4s ease, transform 0.4s ease;
         }
         .viewer-dot.active { background: #fff; transform: scale(1.4); }
+        
         @media (max-width: 800px) {
-            .project-intro { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+            .project-info-band { grid-template-columns: 1fr; gap: 50px; }
             .image-viewer { height: 70vh; }
-            .project-title-block h2 { font-size: 2.8rem; }
             .viewer-prev-label span, .viewer-next-label span { display: none; }
         }
     </style>
@@ -192,14 +261,20 @@
         <span>Close</span>
     </a>
 
-    <section class="reveal">
-        <div class="project-intro">
-            <div class="project-title-block">
-                <h2>The Courtyard<br><em>House.</em></h2>
-            </div>
-            <div class="project-details-block">
+    <section class="hero-banner">
+        <img src="images/the-courtyard-house/IMG_6261-HDR-2.webp" alt="The Courtyard House">
+        <div class="hero-overlay">
+            <h1>The Courtyard House</h1>
+            <div class="tagline">Gurugram</div>
+        </div>
+    </section>
+
+    <section class="project-info-band">
+        <div class="info-left">
+            <h3>Project Details</h3>
+            <div class="project-details">
                 <div class="detail-item">
-                    <span>Typology</span>
+                    <span>Category</span>
                     <p>Residential</p>
                 </div>
                 <div class="detail-item">
@@ -216,9 +291,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="project-brief">
-            <p>A courtyard-centric residence that mediates between built form and landscape. The design draws light deep into the interior while establishing a dialogue between polished concrete, local stone, and timber surfaces. A contemporary interpretation of tropical modernism — breathable, grounded, and attuned to place.</p>
+        <div class="info-right">
+            <h3>About</h3>
+            <p>This bungalow was conceived around a central courtyard that becomes the heart of the home, creating a seamless connection between the interior spaces and the outdoors. The courtyard not only brings natural light and ventilation deep into the house but also acts as a transitional space where daily life naturally spills from inside to outside.</p>
+            <p>Large openings and sliding wooden frames blur the boundaries between the living areas and the courtyard, allowing the house to feel open, calm, and closely connected to nature. The architectural language remains understated, with muted finishes, natural materials, and carefully proportioned spaces establishing a quiet sense of balance.</p>
+            <p>Artworks and furniture are thoughtfully placed within this restrained setting, adding moments of character without overwhelming the simplicity of the design. The result is a home that feels intimate yet open—where architecture, landscape, and everyday living come together around the courtyard.</p>
         </div>
     </section>
 
