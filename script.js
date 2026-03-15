@@ -63,6 +63,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }, 1050);
     }
 
-    // 4.5s on screen + 1s transition = 5.5s interval
-    setInterval(nextSlide, 3000);
+    setInterval(nextSlide, 5000);
 })();
