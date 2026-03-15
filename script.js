@@ -63,5 +63,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }, 1050);
     }
 
-    setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 3500);
 })();
