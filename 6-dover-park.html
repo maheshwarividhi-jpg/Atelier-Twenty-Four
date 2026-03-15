@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
-
-        /* Hide the main nav entirely on this page */
         nav { display: none !important; }
-
-        /* Minimal close button — fixed top right, always visible */
         .close-btn {
             position: fixed;
             top: 36px;
@@ -29,41 +25,54 @@
             transition: opacity 0.3s ease;
         }
         .close-btn:hover { opacity: 1; }
-        .close-x {
-            font-size: 1.2rem;
-            font-weight: 300;
-            line-height: 1;
+        .close-x { font-size: 1.2rem; font-weight: 300; line-height: 1; }
+        
+        .hero-banner {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
-
-        .project-intro {
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .project-info-band {
+            width: 100%;
+            background: #fff;
+            padding: 80px 5%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            padding: 80px 5% 80px;
-            align-items: end;
+            grid-template-columns: 45% 55%;
+            gap: 100px;
+            align-items: flex-start;
         }
-
-        .project-title-block h2 {
+        
+        .info-left h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.8rem, 6vw, 5rem);
             font-weight: 400;
-            line-height: 1;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-
-        .project-title-block h2 em {
+        
+        .info-left .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
             font-style: italic;
-            font-weight: 500;
+            color: #666;
+            margin-bottom: 50px;
         }
-
-        .project-details-block {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px 40px;
-            padding-bottom: 8px;
+        
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
-
         .detail-item span {
             display: block;
             font-size: 0.6rem;
@@ -72,27 +81,25 @@
             color: #888;
             margin-bottom: 6px;
         }
-
-        .detail-item p {
-            font-size: 0.85rem;
-            font-weight: 300;
+        .detail-item p { 
+            font-size: 0.85rem; 
+            font-weight: 300; 
             letter-spacing: 0.3px;
+            color: #111;
         }
-
-        .project-brief {
-            padding: 0 5% 100px;
-            max-width: 680px;
-        }
-
-        .project-brief p {
+        
+        .info-right p {
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.85;
             color: #444;
             letter-spacing: 0.2px;
+            margin-bottom: 1.5em;
         }
-
-        /* Image viewer */
+        .info-right p:last-child {
+            margin-bottom: 0;
+        }
+        
         .image-viewer {
             position: relative;
             width: 100%;
@@ -103,7 +110,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .viewer-slide {
             position: absolute;
             inset: 0;
@@ -113,9 +119,7 @@
             align-items: center;
             justify-content: center;
         }
-
         .viewer-slide.active { opacity: 1; }
-
         .viewer-slide img {
             max-width: 100%;
             max-height: 90vh;
@@ -124,10 +128,7 @@
             object-fit: contain;
             display: block;
         }
-
-        /* Prev / Next click zones */
-        .viewer-prev,
-        .viewer-next {
+        .viewer-prev, .viewer-next {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -138,12 +139,9 @@
             align-items: flex-end;
             padding-bottom: 50px;
         }
-
         .viewer-prev { left: 0; justify-content: flex-start; padding-left: 5%; }
         .viewer-next { right: 0; justify-content: flex-end; padding-right: 5%; }
-
-        .viewer-prev-label,
-        .viewer-next-label {
+        .viewer-prev-label, .viewer-next-label {
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
@@ -153,18 +151,9 @@
             gap: 12px;
             transition: color 0.3s ease;
         }
-
         .viewer-prev:hover .viewer-prev-label,
         .viewer-next:hover .viewer-next-label { color: #fff; }
-
-        .arrow {
-            width: 36px;
-            height: 1px;
-            background: currentColor;
-            position: relative;
-            flex-shrink: 0;
-        }
-
+        .arrow { width: 36px; height: 1px; background: currentColor; position: relative; flex-shrink: 0; }
         .arrow-left::before {
             content: '';
             position: absolute;
@@ -176,7 +165,6 @@
             border-top: 1px solid currentColor;
             transform: rotate(-45deg);
         }
-
         .arrow-right::after {
             content: '';
             position: absolute;
@@ -188,7 +176,6 @@
             border-top: 1px solid currentColor;
             transform: rotate(45deg);
         }
-
         .viewer-counter {
             position: absolute;
             bottom: 50px;
@@ -200,7 +187,6 @@
             color: rgba(255,255,255,0.7);
             font-weight: 300;
         }
-
         .viewer-dots {
             position: absolute;
             bottom: 20px;
@@ -210,7 +196,6 @@
             display: flex;
             gap: 8px;
         }
-
         .viewer-dot {
             width: 4px;
             height: 4px;
@@ -218,24 +203,16 @@
             background: rgba(255,255,255,0.35);
             transition: background 0.4s ease, transform 0.4s ease;
         }
-
-        .viewer-dot.active {
-            background: #fff;
-            transform: scale(1.4);
-        }
-
+        .viewer-dot.active { background: #fff; transform: scale(1.4); }
+        
         @media (max-width: 800px) {
-            .project-intro { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+            .project-info-band { grid-template-columns: 1fr; gap: 40px; }
             .image-viewer { height: 70vh; }
-            .project-title-block h2 { font-size: 2.8rem; }
-            .viewer-prev-label span,
-            .viewer-next-label span { display: none; }
+            .viewer-prev-label span, .viewer-next-label span { display: none; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Nav hidden, replaced with minimal close button -->
     <nav>
         <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
         <div class="nav-links">
@@ -250,12 +227,15 @@
         <span>Close</span>
     </a>
 
-    <section class="reveal">
-        <div class="project-intro">
-            <div class="project-title-block">
-                <h2>6 Dover<br><em>Park.</em></h2>
-            </div>
-            <div class="project-details-block">
+    <section class="hero-banner">
+        <img src="images/6-dover-park/IMG_0215-HDR.webp" alt="6 Dover Park">
+    </section>
+
+    <section class="project-info-band">
+        <div class="info-left">
+            <h1>Penthouse Apartment</h1>
+            <div class="tagline">6 Dover Park</div>
+            <div class="project-details">
                 <div class="detail-item">
                     <span>Category</span>
                     <p>Residential</p>
@@ -265,40 +245,40 @@
                     <p>Kolkata</p>
                 </div>
                 <div class="detail-item">
-                    <span>Scope</span>
-                    <p>Interior Design &amp; Architecture</p>
+                    <span>Status</span>
+                    <p>Completed</p>
                 </div>
                 <div class="detail-item">
                     <span>Year</span>
-                    <p>2021</p>
+                    <p>2023</p>
                 </div>
             </div>
         </div>
-
-        <div class="project-brief">
-            <p>A layered dialogue between heritage and modernity, 6 Dover Park weaves teak joinery, hand-curated antiques, and textured lime plaster into a home that breathes with memory. Across three floors and an open terrace, each space unfolds with quiet intention — from the dramatic wrought-iron entry gate to the double-height stairwell crowned in tropical light, every detail is a considered act of living.</p>
+        <div class="info-right">
+            <p>Located in a quiet Kolkata neighborhood, this Dover Park penthouse is envisioned as a calm, light-filled urban retreat. The design balances openness with understated elegance, creating a contemporary space that feels deeply livable.</p>
+            <p>Anchored by natural materials, the home unfolds through interconnected spaces bathed in soft daylight. A sculptural wooden staircase forms the visual centerpiece, adding vertical drama while seamlessly connecting the two levels. Warm timber flooring, subtle textured walls, and thoughtfully integrated greenery soften the architectural lines, offering moments of visual pause.</p>
+            <p>Guided by a restrained, timeless palette of natural wood, muted neutrals, and tactile finishes, the environment feels both intimate and open. The result is a fluid, refined residence that celebrates warmth, craft, and everyday comfort.</p>
         </div>
     </section>
 
     <div class="image-viewer" id="viewer">
-
-        <div class="viewer-slide active"><img src="images/6-dover-park/IMG_0215-HDR.webp" alt="Living room"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0202-HDR.webp" alt="Foyer"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0194-HDR.webp" alt="Staircase"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0129-HDR.webp" alt="Kitchen and stair"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0117-HDR.webp" alt="Open plan living"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0077-HDR.webp" alt="Four-poster bedroom"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0002-HDR.webp" alt="Bathroom"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2369-1.webp" alt="Terrace exterior"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2349-1.webp" alt="Terrace view"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2330.webp" alt="Interior space"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2319.webp" alt="Living area"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2306.webp" alt="Room detail"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2300.webp" alt="Terrace colonnade"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2299.webp" alt="Checkerboard terrace"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2297.webp" alt="Master bedroom"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2279.webp" alt="Bedroom corner"></div>
-        <div class="viewer-slide"><img src="images/6-dover-park/untitled-2248.webp" alt="Living room detail"></div>
+        <div class="viewer-slide active"><img src="images/6-dover-park/IMG_0215-HDR.webp" alt="6 Dover Park"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0217-HDR.webp" alt="Interior view"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0220-HDR.webp" alt="Living space"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0230-HDR.webp" alt="Detail"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0235-HDR.webp" alt="Bedroom"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0240-HDR.webp" alt="Kitchen"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0242-HDR.webp" alt="Dining"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0244-HDR.webp" alt="Bathroom"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0249-HDR.webp" alt="Staircase"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0252-HDR.webp" alt="Exterior"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0256-HDR.webp" alt="Garden"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0258-HDR.webp" alt="Terrace"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0260-HDR.webp" alt="Night view"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0262-HDR.webp" alt="Detail shot"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0265-HDR.webp" alt="Lounge"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0267-HDR.webp" alt="Study"></div>
+        <div class="viewer-slide"><img src="images/6-dover-park/IMG_0277-HDR.webp" alt="Final view"></div>
 
         <div class="viewer-prev" onclick="changeImage(-1)">
             <div class="viewer-prev-label">
@@ -366,6 +346,5 @@
             if (e.key === 'ArrowLeft') changeImage(-1);
         });
     </script>
-
 </body>
 </html>
