@@ -74,12 +74,6 @@ nav {
     inset: 0;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-.carousel-slide.active {
-    opacity: 1;
 }
 
 .carousel-overlay {
