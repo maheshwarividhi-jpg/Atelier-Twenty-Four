@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -178,6 +178,14 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
 
     <a class="close-btn" href="index.html#projects">
         <span class="close-x">&#x2715;</span>
@@ -196,35 +204,36 @@
                 </div>
                 <div class="detail-item">
                     <span>Location</span>
-                    <p>Colombo, Sri Lanka</p>
+                    <p>New Delhi</p>
                 </div>
                 <div class="detail-item">
                     <span>Status</span>
-                    <p>Completed</p>
+                    <p>Design Development</p>
                 </div>
                 <div class="detail-item">
                     <span>Year</span>
-                    <p>2023</p>
+                    <p>2025</p>
                 </div>
             </div>
         </div>
 
         <div class="project-brief">
-            <p>Designed for a cosmetics brand, this workspace redefines the corporate interior through soft minimalism and organic flow. Curved partitions and a muted palette of sand and warm neutrals establish a spatial language that mirrors the beauty industry's aesthetic — refined, tactile, and professional.</p>
+            <p>Designed for a cosmetics brand, this workspace redefines the corporate interior through soft minimalism and organic flow. Curved partitions and a muted palette of sand, blush, and warm neutrals establish a spatial language that mirrors the industry's aesthetic sensibility — refined, tactile, and quietly aspirational.</p>
         </div>
     </section>
 
     <div class="image-viewer" id="viewer">
-        <div class="viewer-slide active"><img src="images/the_bdesire_headquarters/waiting_lounge.webp" alt="Waiting lounge"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/from_waiting_lounge.webp" alt="From waiting lounge"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/from_waiting_lounge_1.webp" alt="Lounge view"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/cafeteria.webp" alt="Cafeteria"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/director_room_1.webp" alt="Director office"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/director_room_2.webp" alt="Director detail"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/director_room_2_1.webp" alt="Director angle"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/npd.webp" alt="NPD area"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/ws_1.webp" alt="Workspace"></div>
-        <div class="viewer-slide"><img src="images/the_bdesire_headquarters/from_cafeteria_1.webp" alt="From cafeteria"></div>
+        <div class="viewer-slide active"><img src="images/the-bdesire-headquarters/WAITING-LOUNGE.webp" alt="Waiting lounge"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/FROM-WAITING-LOUNGE.webp" alt="From waiting lounge"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/FROM-WAITING-LOUNGE-1.webp" alt="Lounge view"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/CAFETERIA.webp" alt="Cafeteria"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR-ROOM.webp" alt="Director room"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR-ROOM-1.webp" alt="Director office"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR-ROOM-2.webp" alt="Director detail"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR-ROOM-2-1.webp" alt="Director angle"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/NPD.webp" alt="NPD area"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/WS-1.webp" alt="Workspace"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/FROM-CAFETERIA-1.webp" alt="From cafeteria"></div>
 
         <div class="viewer-prev" onclick="changeImage(-1)">
             <div class="viewer-prev-label">
@@ -240,20 +249,28 @@
             </div>
         </div>
 
-        <div class="viewer-counter" id="counter">01 / 10</div>
+        <div class="viewer-counter" id="counter">01 / 11</div>
         <div class="viewer-dots" id="dots"></div>
     </div>
 
     <footer id="contact">
         <div class="contact-info">
             <p>Inquiries: hello@ateliertwentyfour.com</p>
+            <p>Phone: +1 (234) 567-8910</p>
         </div>
         <div class="social-links">
-            <a href="https://instagram.com/ateliertwentyfour" target="_blank">Instagram</a>
-            <a href="https://pinterest.com/ateliertwentyfour" target="_blank">Pinterest</a>
+            <a href="https://instagram.com/ateliertwentyfour" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+                Instagram
+            </a>
+            <a href="https://pinterest.com/ateliertwentyfour" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest">
+                Pinterest
+            </a>
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
