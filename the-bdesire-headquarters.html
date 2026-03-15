@@ -328,7 +328,7 @@
 
     <footer id="contact">
         <div class="contact-info">
-            <p>Inquiries: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e060b0202012e0f1a0b02070b1c1a190b001a1708011b1c400d0103">[email&#160;protected]</a></p>
+            <p>Inquiries: hello@ateliertwentyfour.com</p>
             <p>Phone: +1 (234) 567-8910</p>
         </div>
         <div class="social-links">
@@ -343,7 +343,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+    <script src="script.js"></script>
     <script>
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
@@ -366,4 +366,13 @@
             current = (current + dir + total) % total;
             slides[current].classList.add('active');
             dots[current].classList.add('active');
-            counter.textContent = pad(current + 1) + '
+            counter.textContent = pad(current + 1) + ' / ' + pad(total);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'ArrowLeft') changeImage(-1);
+        });
+    </script>
+</body>
+</html>
