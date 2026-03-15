@@ -262,7 +262,7 @@
     </a>
 
     <section class="hero-banner">
-        <img src="images/the-bdesire-headquarters/WAITING_LOUNGE.webp" alt="Corporate Office">
+        <img src="images/the-bdesire-headquarters/DIRECTOR_ROOM_1.webp" alt="Corporate Office">
         <div class="hero-overlay">
             <h1>Corporate Office</h1>
             <div class="tagline">New Delhi</div>
@@ -300,9 +300,8 @@
     </section>
 
     <div class="image-viewer" id="viewer">
-        <div class="viewer-slide active"><img src="images/the-bdesire-headquarters/WAITING_LOUNGE.webp" alt="Waiting lounge"></div>
-        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/CAFETERIA.webp" alt="Cafeteria"></div>
-        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR_ROOM_1.webp" alt="Director room"></div>
+        <div class="viewer-slide active"><img src="images/the-bdesire-headquarters/CAFETERIA.webp" alt="Cafeteria"></div>
+        <div class="viewer-slide"><img src="images/the-bdesire-headquarters/WAITING_LOUNGE.webp" alt="Waiting lounge"></div>
         <div class="viewer-slide"><img src="images/the-bdesire-headquarters/DIRECTOR_ROOM_2_1.webp" alt="Director detail"></div>
         <div class="viewer-slide"><img src="images/the-bdesire-headquarters/FROM_WAITING_LOUNGE_1.webp" alt="From lounge"></div>
         <div class="viewer-slide"><img src="images/the-bdesire-headquarters/FROM_CAFETERIA_1.webp" alt="From cafeteria"></div>
@@ -323,13 +322,13 @@
             </div>
         </div>
 
-        <div class="viewer-counter" id="counter">01 / 08</div>
+        <div class="viewer-counter" id="counter">01 / 07</div>
         <div class="viewer-dots" id="dots"></div>
     </div>
 
     <footer id="contact">
         <div class="contact-info">
-            <p>Inquiries: hello@ateliertwentyfour.com</p>
+            <p>Inquiries: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e060b0202012e0f1a0b02070b1c1a190b001a1708011b1c400d0103">[email&#160;protected]</a></p>
             <p>Phone: +1 (234) 567-8910</p>
         </div>
         <div class="social-links">
@@ -344,7 +343,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
     <script>
         const slides = document.querySelectorAll('.viewer-slide');
         const counter = document.getElementById('counter');
@@ -367,13 +366,4 @@
             current = (current + dir + total) % total;
             slides[current].classList.add('active');
             dots[current].classList.add('active');
-            counter.textContent = pad(current + 1) + ' / ' + pad(total);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') changeImage(1);
-            if (e.key === 'ArrowLeft') changeImage(-1);
-        });
-    </script>
-</body>
-</html>
+            counter.textContent = pad(current + 1) + '
