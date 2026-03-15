@@ -57,6 +57,11 @@ nav {
     overflow: hidden;
 }
 
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
 /* Carousel */
 .carousel-bg {
     position: absolute;
@@ -69,6 +74,12 @@ nav {
     inset: 0;
     background-size: cover;
     background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.carousel-slide.active {
+    opacity: 1;
 }
 
 .carousel-overlay {
@@ -76,14 +87,6 @@ nav {
     inset: 0;
     background: rgba(255,255,255,0.45);
     z-index: 1;
-}
-
-..hero-text p {
-    font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    color: #000;  /* Changed from rgba(255,255,255,0.85) */
-    opacity: 1;
 }
 
 /* Typography */
@@ -101,7 +104,7 @@ h1 em { font-style: italic; font-family: var(--serif); font-weight: 500; }
     max-width: 380px;
     font-weight: 300;
     font-size: 0.95rem;
-    color: var(--muted);
+    color: #000;
     letter-spacing: 0.5px;
 }
 
