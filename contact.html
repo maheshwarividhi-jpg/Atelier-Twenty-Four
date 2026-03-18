@@ -14,7 +14,7 @@
 
         /* ── Contact Hero ── */
         .contact-hero {
-            padding: 160px 7% 80px;
+            padding: 160px 7% 72px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -26,57 +26,69 @@
             line-height: 1.2;
             color: #1a1a1a;
             letter-spacing: -0.4px;
-            margin: 0 0 24px 0;
+            margin: 0 0 20px 0;
         }
 
         .contact-hero h1 em {
             font-style: italic;
         }
 
-        .contact-hero p {
+        .contact-hero .subhead {
             font-family: 'Inter', sans-serif;
             font-size: 0.88rem;
             font-weight: 300;
             color: #999;
             letter-spacing: 0.3px;
-            margin: 0 0 36px 0;
+            margin: 0 0 40px 0;
         }
 
+        /* ── Contact Meta with Icons ── */
         .contact-meta {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 36px;
             flex-wrap: wrap;
             padding-bottom: 56px;
             border-bottom: 1px solid #ece9e4;
         }
 
-        .contact-meta a {
+        .contact-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .contact-meta-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            stroke: #888;
+        }
+
+        .contact-meta-item span {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             font-weight: 400;
             color: #333;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 2px;
+            letter-spacing: 0.2px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1px;
             transition: color 0.2s, border-color 0.2s;
         }
 
-        .contact-meta a:hover {
+        .contact-meta-item:hover span {
             color: #000;
             border-color: #000;
         }
 
-        .contact-meta-divider {
-            width: 32px;
-            height: 1px;
-            background: #ddd;
+        .contact-meta-item:hover svg {
+            stroke: #000;
         }
 
         /* ── Form Section ── */
         .contact-form-section {
-            padding: 64px 7% 120px;
+            padding: 56px 7% 120px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -88,19 +100,19 @@
             letter-spacing: 2.5px;
             text-transform: uppercase;
             color: #bbb;
-            margin: 0 0 36px 0;
+            margin: 0 0 32px 0;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 18px;
         }
 
         .form-field input,
@@ -108,14 +120,14 @@
         .form-field textarea {
             width: 100%;
             box-sizing: border-box;
-            background: #faf9f7;
-            border: 1px solid #e8e4df;
+            background: #f7f6f4;
+            border: 1px solid #e4e0db;
             border-radius: 40px;
             padding: 18px 26px;
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             font-weight: 300;
-            color: #333;
+            color: #222;
             outline: none;
             transition: border-color 0.25s, background 0.25s;
             appearance: none;
@@ -124,27 +136,31 @@
 
         .form-field input::placeholder,
         .form-field textarea::placeholder {
-            color: #bbb;
+            color: #888;
         }
 
         .form-field select {
-            color: #bbb;
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23aaa' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 24px center;
-            background-color: #faf9f7;
+            background-color: #f7f6f4;
             padding-right: 48px;
+            color: #888;
+        }
+
+        .form-field select.selected {
+            color: #222;
         }
 
         .form-field select option {
-            color: #333;
+            color: #222;
         }
 
         .form-field input:focus,
         .form-field select:focus,
         .form-field textarea:focus {
-            border-color: #b5aca2;
+            border-color: #b0a89e;
             background: #fff;
         }
 
@@ -157,13 +173,6 @@
 
         .form-field.full {
             grid-column: 1 / -1;
-        }
-
-        .form-submit-row {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-top: 8px;
         }
 
         .form-submit {
@@ -180,6 +189,7 @@
             border-radius: 40px;
             cursor: pointer;
             transition: background 0.2s, transform 0.15s;
+            margin-top: 8px;
         }
 
         .form-submit:hover {
@@ -187,11 +197,11 @@
             transform: translateY(-1px);
         }
 
-        /* ── Responsive ── */
         @media (max-width: 700px) {
-            .contact-hero { padding: 130px 6% 60px; }
+            .contact-hero { padding: 130px 6% 56px; }
             .contact-form-section { padding: 48px 6% 80px; }
             .form-row { grid-template-columns: 1fr; }
+            .contact-meta { gap: 20px; }
         }
 
     </style>
@@ -209,12 +219,22 @@
 
     <!-- ── HERO ── -->
     <div class="contact-hero reveal">
-        <h1>Let's Create Something<br><em>Extraordinary Together.</em></h1>
-        <p>Tell us about your vision — we'd love to begin the conversation.</p>
+        <h1>Every great space begins<br><em>with a conversation.</em></h1>
+        <p class="subhead">Tell us about your vision — we'd love to listen.</p>
         <div class="contact-meta">
-            <a href="tel:+918397949432">+91 83979 49432</a>
-            <span class="contact-meta-divider"></span>
-            <a href="mailto:info@ateliertwentyfour.in">info@ateliertwentyfour.in</a>
+            <a href="tel:+918397949432" class="contact-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.91a2 2 0 01-.45 2.11L6.91 7.18a16 16 0 006.91 6.91l.44-.44a2 2 0 012.11-.45c.94.35 1.91.59 2.91.72A2 2 0 0122 16.92z"/>
+                </svg>
+                <span>+91 83979 49432</span>
+            </a>
+            <a href="mailto:info@ateliertwentyfour.in" class="contact-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>info@ateliertwentyfour.in</span>
+            </a>
         </div>
     </div>
 
@@ -235,7 +255,7 @@
                     <input type="email" placeholder="Email Address*" />
                 </div>
                 <div class="form-field">
-                    <select>
+                    <select onchange="this.classList.add('selected')">
                         <option value="" disabled selected>You're looking for*</option>
                         <option value="residential">Residential</option>
                         <option value="commercial">Commercial</option>
@@ -252,9 +272,7 @@
                     <textarea placeholder="Your Message"></textarea>
                 </div>
             </div>
-            <div class="form-submit-row">
-                <button type="submit" class="form-submit">Send Message</button>
-            </div>
+            <button type="submit" class="form-submit">Send Message</button>
         </div>
     </div>
 
