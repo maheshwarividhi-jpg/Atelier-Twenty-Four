@@ -7,37 +7,52 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
+        /* ── Intro / Brand Statement Section ── */
         .intro-section {
-            padding: 120px 5%;
-            text-align: center;
-            background: #fff;
+            background: #f0ede8;
+            padding: 110px 7% 120px;
         }
-        
-        .intro-content {
-            max-width: 800px;
+
+        .intro-inner {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 100px;
+            align-items: start;
         }
-        
-        .intro-content p {
-            font-size: 1.1rem;
+
+        .intro-left p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
             font-weight: 300;
-            line-height: 1.9;
-            color: #444;
-            letter-spacing: 0.3px;
-            margin-bottom: 1.8em;
+            line-height: 2;
+            color: #555;
+            letter-spacing: 0.15px;
+            margin: 0;
         }
-        
-        .intro-content p:last-child {
-            margin-bottom: 0;
+
+        .intro-right blockquote {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            line-height: 1.35;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
         }
-        
-        @media (max-width: 800px) {
+
+        /* Responsive */
+        @media (max-width: 860px) {
             .intro-section {
-                padding: 80px 5%;
+                padding: 70px 6% 80px;
             }
-            
-            .intro-content p {
-                font-size: 1rem;
+
+            .intro-inner {
+                grid-template-columns: 1fr;
+                gap: 44px;
             }
         }
     </style>
@@ -69,11 +84,18 @@
         </div>
     </header>
 
+    <!-- ── INTRO SECTION ── -->
     <section class="intro-section reveal">
-        <div class="intro-content">
-            <p>Atelier Twenty Four is a design practice working at the intersection of architecture and interior design, creating spaces that prioritize clarity, craft, and a quiet sense of refinement.</p>
-            <p>We approach each project as a conversation between materiality and light, believing that architecture should feel effortless rather than imposed. Our work focuses on restraint — not as limitation, but as a means to bring forward what matters: proportion, texture, detail.</p>
-            <p>Based in New Delhi, we work with residential and commercial clients who value thoughtful design, timeless aesthetics, and spaces that feel both intentional and inviting.</p>
+        <div class="intro-inner">
+
+            <div class="intro-left">
+                <p>Atelier Twenty Four is a design practice working at the intersection of architecture and interior design — creating spaces that prioritize clarity, craft, and a quiet sense of refinement. Based in New Delhi, we work with residential and commercial clients who value thoughtful design, timeless aesthetics, and spaces that feel both intentional and deeply personal.</p>
+            </div>
+
+            <div class="intro-right">
+                <blockquote>We shape spaces that balance the precision of architecture with the warmth of a home — refined, considered, and quietly enduring.</blockquote>
+            </div>
+
         </div>
     </section>
 
