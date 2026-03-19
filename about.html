@@ -8,6 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
 
+        /* ── Nav fix ── */
+        body { padding-top: 0; }
+        nav { 
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 100;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
         /* ── Page Header ── */
         .about-header {
             padding: 160px 7% 80px;
@@ -255,8 +268,7 @@
         <div class="principal-inner">
 
             <div class="principal-photo">
-                <img src="images/about-us/ayush-kalra-1.webp" alt="Ayush Kalra">
-                <!-- <span class="photo-placeholder-text">Photo</span> -->
+                <img src="images/about us/ayush-kalra-1.webp" alt="Ayush Kalra">
             </div>
 
             <div class="principal-bio">
@@ -328,7 +340,7 @@
 
     <footer id="contact">
         <div class="contact-info">
-            <p>Inquiries: hello@ateliertwentyfour.com</p>
+            <p>Inquiries: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="83ebe6efefecc3e2f7e6efeae6f1f7f4e6edf7fae5ecf6f1ade0ecee">[email&#160;protected]</a></p>
             <p>Phone: +1 (234) 567-8910</p>
         </div>
         <div class="social-links">
@@ -337,12 +349,4 @@
                 Instagram
             </a>
             <a href="https://pinterest.com/ateliertwentyfour" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest">
-                Pinterest
-            </a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest
