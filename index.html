@@ -24,9 +24,14 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: calc(100% + 8px);
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
+            padding-top: 16px;
+            z-index: 200;
+        }
+
+        .dropdown-menu-inner {
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -35,11 +40,9 @@
             border-radius: 4px;
             min-width: 160px;
             padding: 8px 0;
-            z-index: 200;
         }
 
-        .nav-dropdown:hover .dropdown-menu,
-        .nav-dropdown .dropdown-menu:hover {
+        .nav-dropdown:hover .dropdown-menu {
             display: block;
         }
 
@@ -155,8 +158,10 @@
             <div class="nav-dropdown">
                 <a href="#projects">Projects</a>
                 <div class="dropdown-menu">
-                    <a href="#residential">Residential</a>
-                    <a href="#commercial">Commercial</a>
+                    <div class="dropdown-menu-inner">
+                        <a href="#residential">Residential</a>
+                        <a href="#commercial">Commercial</a>
+                    </div>
                 </div>
             </div>
             <a href="contact.html">Contact</a>
@@ -274,12 +279,15 @@
 
     <script src="script.js"></script>
     <script>
+        // Smooth scroll for dropdown anchor links
         document.querySelectorAll('.dropdown-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const id = this.getAttribute('href').replace('#', '');
+                const target = document.getElementById(id);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const offset = target.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
                 }
             });
         });
