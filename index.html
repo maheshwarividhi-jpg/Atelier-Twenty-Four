@@ -54,15 +54,102 @@
             .intro-inner { grid-template-columns: 1fr; gap: 44px; }
         }
 
-    </style>
-</head>
+        /* ── Nav Dropdown ── */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a::after {
+            content: ' ↓';
+            font-size: 0.65rem;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            border-radius: 4px;
+            min-width: 160px;
+            padding: 8px 0;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: #000;
+            background: rgba(0,0,0,0.03);
+        }
+
+        /* ── Project Section Dividers ── */
+        .project-section-label {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 48px 0 8px;
+        }
+
+        .project-section-label span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #aaa;
+            white-space: nowrap;
+        }
+
+        .project-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8e4df;
+        }
+
+        .project-section-label.first {
+            padding-top: 0;
+        }
+
+
 <body>
 
     <nav>
         <div class="logo">ATELIER TWENTY FOUR</div>
         <div class="nav-links">
             <a href="about.html">About Us</a>
-            <a href="#projects">Projects</a>
+            <div class="nav-dropdown">
+                <a href="#projects">Projects</a>
+                <div class="dropdown-menu">
+                    <a href="#residential">Residential</a>
+                    <a href="#commercial">Commercial</a>
+                </div>
+            </div>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -100,6 +187,11 @@
 
     <!-- ── PROJECTS ── -->
     <main class="project-grid" id="projects">
+
+        <!-- RESIDENTIAL -->
+        <div class="project-section-label first" id="residential">
+            <span>Residential</span>
+        </div>
 
         <a class="project-card reveal" href="6-dover-park.html">
             <div class="image-wrapper">
@@ -140,6 +232,11 @@
                 <h3>Contemporary Apartment</h3>
             </div>
         </a>
+
+        <!-- COMMERCIAL -->
+        <div class="project-section-label" id="commercial">
+            <span>Commercial</span>
+        </div>
 
         <a class="project-card reveal" href="the-bdesire-headquarters.html">
             <div class="image-wrapper">
