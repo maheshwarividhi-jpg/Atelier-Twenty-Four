@@ -24,14 +24,9 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 12px);
             left: 50%;
             transform: translateX(-50%);
-            padding-top: 16px;
-            z-index: 200;
-        }
-
-        .dropdown-menu-inner {
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -40,9 +35,10 @@
             border-radius: 4px;
             min-width: 160px;
             padding: 8px 0;
+            z-index: 200;
         }
 
-        .nav-dropdown:hover .dropdown-menu {
+        .dropdown-menu.open {
             display: block;
         }
 
@@ -147,6 +143,40 @@
             .intro-inner { grid-template-columns: 1fr; gap: 44px; }
         }
 
+        /* ── Mobile only ── */
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: clamp(2rem, 10vw, 2.8rem) !important;
+                white-space: normal !important;
+            }
+            .hero-text p {
+                font-size: clamp(0.85rem, 4vw, 1rem) !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            /* Hero text size on mobile */
+            .hero-text h1 {
+                font-size: clamp(2rem, 8vw, 3rem) !important;
+                white-space: normal !important;
+            }
+            .hero-text p {
+                font-size: clamp(0.85rem, 3.5vw, 1.1rem) !important;
+            }
+            /* Nav logo single line on mobile */
+            .logo {
+                font-size: 0.6rem !important;
+                letter-spacing: 2px !important;
+                white-space: nowrap !important;
+            }
+            /* Nav links smaller on mobile */
+            .nav-links a,
+            .nav-dropdown > a {
+                font-size: 0.6rem !important;
+                letter-spacing: 1px !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -158,10 +188,8 @@
             <div class="nav-dropdown">
                 <a href="#projects">Projects</a>
                 <div class="dropdown-menu">
-                    <div class="dropdown-menu-inner">
-                        <a href="#residential">Residential</a>
-                        <a href="#commercial">Commercial</a>
-                    </div>
+                    <a href="#residential">Residential</a>
+                    <a href="#commercial">Commercial</a>
                 </div>
             </div>
             <a href="contact.html">Contact</a>
@@ -179,8 +207,8 @@
         </div>
         <div class="carousel-overlay"></div>
         <div class="hero-text" style="position:absolute; bottom: 60px; left: 7%; top: auto; transform: none; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
-            <h1 style="font-size: clamp(3.6rem, 6vw, 5.6rem); color: #444; white-space: nowrap; margin: 0; padding: 0; display: block;">Curated <em>Spaces.</em></h1>
-            <p style="font-size: clamp(1rem, 1.8vw, 1.5rem); color: #444; margin: 0; padding: 0; display: block;">Defined by Purpose.</p>
+            <h1 style="color: #444; white-space: nowrap; margin: 0; padding: 0; display: block;">Curated <em>Spaces.</em></h1>
+            <p style="color: #444; margin: 0; padding: 0; display: block;">Defined by Purpose.</p>
         </div>
     </header>
 
@@ -279,10 +307,27 @@
 
     <script src="script.js"></script>
     <script>
-        // Smooth scroll for dropdown anchor links
+        // Toggle dropdown on click
+        const trigger = document.querySelector('.nav-dropdown > a');
+        const menu = document.querySelector('.dropdown-menu');
+
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            menu.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Smooth scroll to section
         document.querySelectorAll('.dropdown-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                menu.classList.remove('open');
                 const id = this.getAttribute('href').replace('#', '');
                 const target = document.getElementById(id);
                 if (target) {

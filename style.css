@@ -232,8 +232,13 @@ footer {
     
     .nav-links {
         display: flex;
+        flex-direction: row;
         gap: 12px;
         align-items: center;
+    }
+
+    .nav-links .nav-dropdown {
+        display: inline-block;
     }
     
     .nav-links a {
@@ -241,14 +246,17 @@ footer {
         font-size: 0.6rem;
         letter-spacing: 1px;
     }
+
+    h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem) !important;
+        white-space: normal !important;
+    }
     
     .project-grid { 
         grid-template-columns: 1fr; 
         gap: 60px; 
         padding-top: 100px; 
     }
-    
-    h1 { font-size: 2.4rem; }
     
     .social-links { 
         flex-direction: column; 
