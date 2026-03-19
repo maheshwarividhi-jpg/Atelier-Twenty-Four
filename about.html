@@ -7,56 +7,231 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
-        .about-section {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 5%;
+
+        /* ── Page Header ── */
+        .about-header {
+            padding: 160px 7% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        .about-container {
-            max-width: 800px;
-            text-align: center;
-        }
-        
-        .about-container h1 {
+
+        .about-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 400;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            margin-bottom: 60px;
+            color: #1a1a1a;
+            margin: 0;
         }
-        
-        .about-container h1 em {
+
+        .about-header h1 em {
             font-style: italic;
             font-weight: 500;
         }
-        
-        .about-text {
-            max-width: 650px;
+
+        /* ── Principal Section ── */
+        .principal-section {
+            padding: 0 7% 120px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .about-text p {
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.85;
-            color: #444;
-            letter-spacing: 0.2px;
-            margin-bottom: 1.8em;
+
+        .principal-inner {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 80px;
+            align-items: start;
         }
-        
-        .about-text p:last-child {
+
+        /* Photo placeholder — soft organic shape */
+        .principal-photo {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #e8e3dd;
+            border-radius: 60% 40% 55% 45% / 50% 50% 50% 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .principal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .principal-photo .photo-placeholder-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #aaa;
+        }
+
+        /* Bio text */
+        .principal-bio {
+            padding-top: 16px;
+        }
+
+        .principal-bio .role-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #bbb;
+            margin: 0 0 20px 0;
+        }
+
+        .principal-bio h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: #1a1a1a;
+            margin: 0 0 8px 0;
+        }
+
+        .principal-bio .title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 0.5px;
+            margin: 0 0 40px 0;
+        }
+
+        .principal-bio .divider {
+            width: 40px;
+            height: 1px;
+            background: #d8d3cc;
+            margin-bottom: 36px;
+        }
+
+        .principal-bio p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 300;
+            line-height: 1.95;
+            color: #555;
+            letter-spacing: 0.15px;
+            margin: 0 0 1.6em 0;
+        }
+
+        .principal-bio p:last-child {
             margin-bottom: 0;
         }
-        
-        @media (max-width: 800px) {
-            .about-section {
-                padding: 100px 5%;
+
+        /* ── Team Section ── */
+        .team-section {
+            background: #f7f5f2;
+            padding: 100px 7%;
+        }
+
+        .team-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #bbb;
+            margin: 0 0 60px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Soft circle photo placeholder */
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #e2ddd8;
+            border-radius: 50% 50% 48% 52% / 50% 50% 52% 48%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: border-radius 0.6s ease;
+        }
+
+        .team-photo:hover {
+            border-radius: 50%;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-photo .team-placeholder-icon {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+        }
+
+        .team-card .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin: 0 0 6px 0;
+        }
+
+        .team-card .team-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #aaa;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .principal-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .principal-photo {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
             }
         }
+
+        @media (max-width: 500px) {
+            .about-header { padding: 130px 6% 60px; }
+            .principal-section { padding: 0 6% 80px; }
+            .team-section { padding: 70px 6%; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        }
+
     </style>
 </head>
 <body>
@@ -66,17 +241,87 @@
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="index.html#projects">Projects</a>
-            <a href="index.html#contact">Contact</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <section class="about-section">
-        <div class="about-container">
-            <h1>About <em>Us.</em></h1>
-            <div class="about-text">
-                <p>Atelier Twenty Four is a design practice working at the intersection of architecture and interior design, creating spaces that prioritize clarity, craft, and a quiet sense of refinement.</p>
-                <p>We approach each project as a conversation between materiality and light, believing that architecture should feel effortless rather than imposed. Our work focuses on restraint — not as limitation, but as a means to bring forward what matters: proportion, texture, detail.</p>
-                <p>Based in New Delhi, we work with residential and commercial clients who value thoughtful design, timeless aesthetics, and spaces that feel both intentional and inviting.</p>
+    <!-- ── PAGE HEADER ── -->
+    <div class="about-header reveal">
+        <h1>The People<br>Behind the <em>Spaces.</em></h1>
+    </div>
+
+    <!-- ── PRINCIPAL ARCHITECT ── -->
+    <section class="principal-section reveal">
+        <div class="principal-inner">
+
+            <div class="principal-photo">
+                <img src="images/about-us/ayush-kalra-1.webp" alt="Ayush Kalra">
+                <!-- <span class="photo-placeholder-text">Photo</span> -->
+            </div>
+
+            <div class="principal-bio">
+                <p class="role-label">Principal Architect</p>
+                <h2>Ayush Kalra</h2>
+                <p class="title">Principal Architect & Designer</p>
+                <div class="divider"></div>
+                <p>Studied at the Faculty of Architecture, KU Leuven, and worked across Europe before returning to New Delhi to establish Atelier Twenty Four in 2017.</p>
+                <p>His time abroad shaped more than his aesthetic — it fundamentally changed how he approaches the act of designing. Working alongside peers who began with ambition rather than caution taught him that the best outcomes are rarely the most obvious ones. He brought that ethos back, and built a practice around it.</p>
+                <p>With a decade and a half in the industry, his work is defined by an obsession with materials, craft, and the kind of detail that is noticed only when it is missing. Every project is held to a process as considered as the design itself — because how something gets built is inseparable from what it becomes.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── TEAM ── -->
+    <section class="team-section reveal">
+        <div class="team-inner">
+            <p class="team-label">The Studio</p>
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- <img src="images/team/member-1.webp" alt="Team Member"> -->
+                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <p class="team-name">Team Member</p>
+                    <p class="team-role">Role</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- <img src="images/team/member-2.webp" alt="Team Member"> -->
+                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <p class="team-name">Team Member</p>
+                    <p class="team-role">Role</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- <img src="images/team/member-3.webp" alt="Team Member"> -->
+                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <p class="team-name">Team Member</p>
+                    <p class="team-role">Role</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- <img src="images/team/member-4.webp" alt="Team Member"> -->
+                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <p class="team-name">Team Member</p>
+                    <p class="team-role">Role</p>
+                </div>
+
             </div>
         </div>
     </section>
