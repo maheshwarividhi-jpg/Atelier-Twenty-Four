@@ -24,9 +24,15 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: calc(100% + 12px);
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
+            padding-top: 12px;
+            background: transparent;
+            z-index: 200;
+        }
+
+        .dropdown-menu-inner {
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -35,10 +41,10 @@
             border-radius: 4px;
             min-width: 160px;
             padding: 8px 0;
-            z-index: 200;
         }
 
-        .dropdown-menu.open {
+        .dropdown-menu.open,
+        .nav-dropdown:hover .dropdown-menu {
             display: block;
         }
 
@@ -188,8 +194,10 @@
             <div class="nav-dropdown">
                 <a href="javascript:void(0)">Projects</a>
                 <div class="dropdown-menu">
-                    <a href="#residential">Residential</a>
-                    <a href="#commercial">Commercial</a>
+                    <div class="dropdown-menu-inner">
+                        <a href="#residential">Residential</a>
+                        <a href="#commercial">Commercial</a>
+                    </div>
                 </div>
             </div>
             <a href="contact.html">Contact</a>
