@@ -18,6 +18,7 @@ body {
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 60px 5%;
     position: fixed;
     width: 100%;
@@ -31,6 +32,12 @@ nav {
     font-weight: 400;
     font-size: 0.8rem;
     text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
 }
 
 .nav-links a {
