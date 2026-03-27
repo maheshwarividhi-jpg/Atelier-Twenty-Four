@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Atelier Twenty Four</title>
+    <title>People | Atelier Twenty Four</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
 
-        /* ── Nav fix ── */
-        body { padding-top: 0; }
-        nav { 
+        body { background: #fff; }
+
+        nav {
             position: fixed;
-            top: 0; 
-            left: 0; 
-            right: 0; 
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(8px);
@@ -78,28 +78,8 @@
             border-radius: inherit;
         }
 
-        .principal-photo .photo-placeholder-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #aaa;
-        }
-
-        /* Bio text */
         .principal-bio {
             padding-top: 16px;
-        }
-
-        .principal-bio .role-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 400;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #bbb;
-            margin: 0 0 20px 0;
         }
 
         .principal-bio h2 {
@@ -138,113 +118,104 @@
             margin: 0 0 1.6em 0;
         }
 
-        .principal-bio p:last-child {
-            margin-bottom: 0;
+        .principal-bio p:last-child { margin-bottom: 0; }
+
+        /* ── Current Openings ── */
+        .openings-section {
+            padding: 100px 7% 120px;
+            border-top: 1px solid #ece9e4;
         }
 
-        /* ── Team Section ── */
-        .team-section {
-            background: #f7f5f2;
-            padding: 100px 7%;
-        }
-
-        .team-inner {
+        .openings-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .team-label {
+        .openings-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            margin-bottom: 64px;
+            align-items: start;
+        }
+
+        .openings-label {
             font-family: 'Inter', sans-serif;
             font-size: 0.72rem;
             font-weight: 400;
             letter-spacing: 2.5px;
             text-transform: uppercase;
             color: #bbb;
-            margin: 0 0 60px 0;
+            margin: 0;
+            padding-top: 4px;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+        .openings-intro {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: #666;
+            margin: 0;
+            max-width: 520px;
         }
 
-        .team-card {
+        .openings-list {
+            border-top: 1px solid #ece9e4;
+        }
+
+        .opening-row {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
+            padding: 24px 0;
+            border-bottom: 1px solid #ece9e4;
         }
 
-        /* Soft circle photo placeholder */
-        .team-photo {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: #e2ddd8;
-            border-radius: 50% 50% 48% 52% / 50% 50% 52% 48%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            transition: border-radius 0.6s ease;
-        }
-
-        .team-photo:hover {
-            border-radius: 50%;
-        }
-
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-photo .team-placeholder-icon {
-            width: 40px;
-            height: 40px;
-            opacity: 0.3;
-        }
-
-        .team-card .team-name {
+        .opening-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #1a1a1a;
-            margin: 0 0 6px 0;
         }
 
-        .team-card .team-role {
+        .opening-exp {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
             font-weight: 300;
             color: #aaa;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
+
+        .openings-cta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .openings-cta a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .openings-cta a:hover { color: #000; border-color: #000; }
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-            .principal-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .principal-photo {
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
+            .principal-inner { grid-template-columns: 1fr; gap: 48px; }
+            .principal-photo { max-width: 320px; margin: 0 auto; }
+            .openings-header { grid-template-columns: 1fr; gap: 16px; }
         }
 
         @media (max-width: 500px) {
             .about-header { padding: 130px 6% 60px; }
             .principal-section { padding: 0 6% 80px; }
-            .team-section { padding: 70px 6%; }
-            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .openings-section { padding: 70px 6% 80px; }
         }
 
     </style>
@@ -252,9 +223,11 @@
 <body>
 
     <nav>
-        <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a></div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a>
+        </div>
         <div class="nav-links">
-            <a href="about.html">About Us</a>
+            <a href="about.html">People</a>
             <a href="index.html#projects">Projects</a>
             <a href="contact.html">Contact</a>
         </div>
@@ -285,69 +258,52 @@
         </div>
     </section>
 
-    <!-- ── TEAM ── -->
-    <section class="team-section">
-        <div class="team-inner">
-            <p class="team-label">The Studio</p>
-            <div class="team-grid">
+    <!-- ── CURRENT OPENINGS ── -->
+    <section class="openings-section">
+        <div class="openings-inner">
 
-                <div class="team-card">
-                    <div class="team-photo">
-                        <!-- <img src="images/team/member-1.webp" alt="Team Member"> -->
-                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <p class="team-name">Team Member</p>
-                    <p class="team-role">Role</p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-photo">
-                        <!-- <img src="images/team/member-2.webp" alt="Team Member"> -->
-                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <p class="team-name">Team Member</p>
-                    <p class="team-role">Role</p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-photo">
-                        <!-- <img src="images/team/member-3.webp" alt="Team Member"> -->
-                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <p class="team-name">Team Member</p>
-                    <p class="team-role">Role</p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-photo">
-                        <!-- <img src="images/team/member-4.webp" alt="Team Member"> -->
-                        <svg class="team-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <p class="team-name">Team Member</p>
-                    <p class="team-role">Role</p>
-                </div>
-
+            <div class="openings-header">
+                <p class="openings-label">Current Openings</p>
+                <p class="openings-intro">We're always looking to hire new talent for our team — if you believe in the same things we do, there's likely a place for you here.</p>
             </div>
+
+            <div class="openings-list">
+                <div class="opening-row">
+                    <span class="opening-title">Junior Architect</span>
+                    <span class="opening-exp">0 — 2 years</span>
+                </div>
+                <div class="opening-row">
+                    <span class="opening-title">Project Architect</span>
+                    <span class="opening-exp">2 — 3 years</span>
+                </div>
+                <div class="opening-row">
+                    <span class="opening-title">Interior Designer</span>
+                    <span class="opening-exp">2 — 4 years</span>
+                </div>
+                <div class="opening-row">
+                    <span class="opening-title">Intern</span>
+                    <span class="opening-exp">—</span>
+                </div>
+            </div>
+
+            <p class="openings-cta">Send your portfolio and a note about yourself to <a href="mailto:info@ateliertwentyfour.com">info@ateliertwentyfour.com</a></p>
+
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="contact-info">
-            <p>Inquiries: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="83ebe6efefecc3e2f7e6efeae6f1f7f4e6edf7fae5ecf6f1ade0ecee">[email&#160;protected]</a></p>
-            <p>Phone: +1 (234) 567-8910</p>
-        </div>
+    <footer>
         <div class="social-links">
             <a href="https://instagram.com/ateliertwentyfour" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
                 Instagram
             </a>
             <a href="https://pinterest.com/ateliertwentyfour" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest">
+                Pinterest
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

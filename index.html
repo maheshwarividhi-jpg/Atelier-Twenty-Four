@@ -11,7 +11,8 @@
         /* ── Nav Dropdown ── */
         .nav-dropdown {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
         }
 
         .nav-dropdown > a::after {
@@ -19,6 +20,16 @@
             font-size: 0.65rem;
             opacity: 0.5;
             vertical-align: middle;
+        }
+
+        @media (max-width: 800px) {
+            .nav-dropdown > a::after {
+                display: none;
+            }
+            .nav-dropdown {
+                display: inline-flex;
+                align-items: center;
+            }
         }
 
         .dropdown-menu {
@@ -46,6 +57,14 @@
         .dropdown-menu.open,
         .nav-dropdown:hover .dropdown-menu {
             display: block;
+        }
+
+        @media (max-width: 800px) {
+            .dropdown-menu {
+                left: auto;
+                right: 0;
+                transform: none;
+            }
         }
 
         .dropdown-menu a {
@@ -190,7 +209,7 @@
     <nav>
         <div class="logo">ATELIER TWENTY FOUR</div>
         <div class="nav-links">
-            <a href="about.html">About Us</a>
+            <a href="about.html">People</a>
             <div class="nav-dropdown">
                 <a href="javascript:void(0)">Projects</a>
                 <div class="dropdown-menu">
@@ -315,26 +334,28 @@
 
     <script src="script.js"></script>
     <script>
-        // Toggle dropdown on click
         const trigger = document.querySelector('.nav-dropdown > a');
         const menu = document.querySelector('.dropdown-menu');
 
+        // Handle both click (desktop) and touch (mobile)
         trigger.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             menu.classList.toggle('open');
         });
 
-        // Close dropdown when clicking outside
+        // Close dropdown when tapping/clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.nav-dropdown')) {
                 menu.classList.remove('open');
             }
         });
 
-        // Smooth scroll to section
+        // Smooth scroll to section — works on both desktop and mobile
         document.querySelectorAll('.dropdown-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 menu.classList.remove('open');
                 const id = this.getAttribute('href').replace('#', '');
                 const target = document.getElementById(id);
