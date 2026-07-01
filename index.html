@@ -189,7 +189,6 @@
         }
 
         @media (max-width: 640px) {
-            /* Hero text size on mobile */
             .hero-text h1 {
                 font-size: clamp(2rem, 8vw, 3rem) !important;
                 white-space: normal !important;
@@ -197,13 +196,11 @@
             .hero-text p {
                 font-size: clamp(0.85rem, 3.5vw, 1.1rem) !important;
             }
-            /* Nav logo single line on mobile */
             .logo {
                 font-size: 0.6rem !important;
                 letter-spacing: 2px !important;
                 white-space: nowrap !important;
             }
-            /* Nav links smaller on mobile */
             .nav-links a,
             .nav-dropdown > a {
                 font-size: 0.6rem !important;
@@ -316,6 +313,16 @@
             <span>Commercial</span>
         </div>
 
+        <a class="project-card" href="learning-courtyard.html">
+            <div class="image-wrapper">
+                <img src="images/learning-courtyard/image 7.png" alt="The Learning Courtyard">
+            </div>
+            <div class="project-meta">
+                <span>Commercial &mdash; Muzaffarnagar</span>
+                <h3>The Learning Courtyard</h3>
+            </div>
+        </a>
+
         <a class="project-card" href="the-bdesire-headquarters.html">
             <div class="image-wrapper">
                 <img src="images/the-bdesire-headquarters/DIRECTOR_ROOM_1.webp" alt="Corporate Office">
@@ -346,21 +353,18 @@
         const trigger = document.querySelector('.nav-dropdown > a');
         const menu = document.querySelector('.dropdown-menu');
 
-        // Handle both click (desktop) and touch (mobile)
         trigger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             menu.classList.toggle('open');
         });
 
-        // Close dropdown when tapping/clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.nav-dropdown')) {
                 menu.classList.remove('open');
             }
         });
 
-        // Smooth scroll to section — works on both desktop and mobile
         document.querySelectorAll('.dropdown-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
