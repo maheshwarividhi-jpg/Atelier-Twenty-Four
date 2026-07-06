@@ -320,4 +320,4 @@ footer {
 @media (max-width: 800px) {
     .about-content { grid-template-columns: 1fr; gap: 40px; }
     .blueprint-grid { grid-template-columns: 1fr; }
-}
+}.viewer-prev, .viewer-next { -webkit-tap-highlight-color: transparent; }
