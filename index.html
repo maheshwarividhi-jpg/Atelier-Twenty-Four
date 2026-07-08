@@ -8,94 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <style>
 
-        /* ── Nav Dropdown ── */
-        .nav-dropdown {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            line-height: 1;
-        }
-
-        .nav-dropdown > a {
-            line-height: 1;
-        }
-
-        .nav-dropdown > a::after {
-            content: ' ↓';
-            font-size: 0.65rem;
-            opacity: 0.5;
-            vertical-align: middle;
-        }
-
-        @media (max-width: 800px) {
-            .nav-dropdown > a::after {
-                display: none;
-            }
-            .nav-dropdown {
-                display: inline-flex;
-                align-items: center;
-                line-height: 1;
-            }
-            .nav-links {
-                align-items: center !important;
-            }
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding-top: 12px;
-            background: transparent;
-            z-index: 200;
-        }
-
-        .dropdown-menu-inner {
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            border-radius: 4px;
-            min-width: 160px;
-            padding: 8px 0;
-        }
-
-        .dropdown-menu.open,
-        .nav-dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        @media (max-width: 800px) {
-            .dropdown-menu {
-                left: auto;
-                right: 0;
-                transform: none;
-            }
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 24px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 400;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            color: #444;
-            text-decoration: none;
-            transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .dropdown-menu a:hover {
-            color: #000;
-            background: rgba(0,0,0,0.03);
-        }
-
         /* ── Intro Section ── */
         .intro-section {
             background: #f0ede8;
@@ -167,7 +79,6 @@
             background: #e8e4df;
         }
 
-        /* ── Scroll anchor offset ── */
         #residential, #commercial {
             scroll-margin-top: 100px;
         }
@@ -177,7 +88,6 @@
             .intro-inner { grid-template-columns: 1fr; gap: 44px; }
         }
 
-        /* ── Mobile only ── */
         @media (max-width: 600px) {
             .hero-text h1 {
                 font-size: clamp(2rem, 10vw, 2.8rem) !important;
@@ -201,8 +111,7 @@
                 letter-spacing: 2px !important;
                 white-space: nowrap !important;
             }
-            .nav-links a,
-            .nav-dropdown > a {
+            .nav-links a {
                 font-size: 0.6rem !important;
                 letter-spacing: 1px !important;
             }
@@ -216,15 +125,7 @@
         <div class="logo">ATELIER TWENTY FOUR</div>
         <div class="nav-links">
             <a href="about.html">People</a>
-            <div class="nav-dropdown" style="display:inline-flex;align-items:center;">
-                <a href="javascript:void(0)">Projects</a>
-                <div class="dropdown-menu">
-                    <div class="dropdown-menu-inner">
-                        <a href="#residential">Residential</a>
-                        <a href="#commercial">Commercial</a>
-                    </div>
-                </div>
-            </div>
+            <a href="#projects">Portfolio</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -361,35 +262,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        const trigger = document.querySelector('.nav-dropdown > a');
-        const menu = document.querySelector('.dropdown-menu');
-
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            menu.classList.toggle('open');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-dropdown')) {
-                menu.classList.remove('open');
-            }
-        });
-
-        document.querySelectorAll('.dropdown-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                menu.classList.remove('open');
-                const id = this.getAttribute('href').replace('#', '');
-                const target = document.getElementById(id);
-                if (target) {
-                    const offset = target.getBoundingClientRect().top + window.scrollY - 100;
-                    window.scrollTo({ top: offset, behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
