@@ -27,198 +27,104 @@
         }
         .close-btn:hover { opacity: 1; }
         .close-x { font-size: 1.2rem; font-weight: 300; line-height: 1; }
-        .hero-banner {
-            width: 100%;
-            height: 85vh;
-            overflow: hidden;
-            position: relative;
-        }
-        .hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .hero-banner { width: 100%; height: 85vh; overflow: hidden; position: relative; }
+        .hero-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .hero-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
             padding: 60px 5% 40px;
             background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
         }
         .hero-overlay h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: #fff;
-            margin-bottom: 8px;
+            font-weight: 400; line-height: 1.1;
+            letter-spacing: -0.02em; color: #fff; margin-bottom: 8px;
         }
         .hero-overlay .tagline {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            font-style: italic;
-            color: rgba(255,255,255,0.85);
+            font-size: 1.3rem; font-weight: 400;
+            font-style: italic; color: rgba(255,255,255,0.85);
         }
         .project-info-band {
-            width: 100%;
-            background: #fff;
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
-            align-items: start;
+            width: 100%; background: #fff; padding: 80px 5%;
+            display: grid; grid-template-columns: 1fr 1.2fr;
+            gap: 80px; align-items: start;
         }
         .info-left { max-width: 500px; }
         .info-left h3 {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #888;
-            margin-bottom: 30px;
-            font-weight: 400;
+            font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 2.5px; color: #888; margin-bottom: 30px; font-weight: 400;
         }
-        .project-details {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            padding-left: 20px;
-        }
+        .project-details { display: flex; flex-direction: column; gap: 32px; padding-left: 20px; }
         .detail-item span {
-            display: block;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #888;
-            margin-bottom: 8px;
+            display: block; font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 2.5px; color: #888; margin-bottom: 8px;
         }
-        .detail-item p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            color: #111;
-        }
+        .detail-item p { font-size: 1.05rem; font-weight: 300; letter-spacing: 0.3px; color: #111; }
         .info-right { max-width: 650px; }
         .info-right h3 {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #888;
-            margin-bottom: 30px;
-            font-weight: 400;
+            font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 2.5px; color: #888; margin-bottom: 30px; font-weight: 400;
         }
         .info-right p {
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.85;
-            color: #444;
-            letter-spacing: 0.2px;
-            margin-bottom: 1.5em;
+            font-size: 1rem; font-weight: 300; line-height: 1.85;
+            color: #444; letter-spacing: 0.2px; margin-bottom: 1.5em;
         }
         .info-right p:last-child { margin-bottom: 0; }
         .image-viewer {
-            position: relative;
-            width: 100%;
-            height: 90vh;
-            overflow: hidden;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative; width: 100%; height: 90vh;
+            overflow: hidden; background: #111;
+            display: flex; align-items: center; justify-content: center;
         }
         .viewer-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
+            position: absolute; inset: 0; opacity: 0;
             transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
         }
         .viewer-slide.active { opacity: 1; }
         .viewer-slide img {
-            max-width: 100%;
-            max-height: 90vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
+            max-width: 100%; max-height: 90vh;
+            width: auto; height: auto; object-fit: contain; display: block;
         }
         .viewer-prev, .viewer-next {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 50%;
-            z-index: 10;
-            cursor: pointer;
-            display: flex;
-            align-items: flex-end;
-            padding-bottom: 50px;
+            position: absolute; top: 0; bottom: 0; width: 50%;
+            z-index: 10; cursor: pointer; display: flex;
+            align-items: flex-end; padding-bottom: 50px;
+            -webkit-tap-highlight-color: transparent;
         }
         .viewer-prev { left: 0; justify-content: flex-start; padding-left: 5%; }
         .viewer-next { right: 0; justify-content: flex-end; padding-right: 5%; }
         .viewer-prev-label, .viewer-next-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: rgba(255,255,255,0.7);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: color 0.3s ease;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.7); display: flex; align-items: center;
+            gap: 12px; transition: color 0.3s ease;
         }
         .viewer-prev:hover .viewer-prev-label,
         .viewer-next:hover .viewer-next-label { color: #fff; }
         .arrow { width: 36px; height: 1px; background: currentColor; position: relative; flex-shrink: 0; }
         .arrow-left::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: -3px;
-            width: 7px;
-            height: 7px;
-            border-left: 1px solid currentColor;
-            border-top: 1px solid currentColor;
+            content: ''; position: absolute; left: 0; top: -3px;
+            width: 7px; height: 7px;
+            border-left: 1px solid currentColor; border-top: 1px solid currentColor;
             transform: rotate(-45deg);
         }
         .arrow-right::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -3px;
-            width: 7px;
-            height: 7px;
-            border-right: 1px solid currentColor;
-            border-top: 1px solid currentColor;
+            content: ''; position: absolute; right: 0; top: -3px;
+            width: 7px; height: 7px;
+            border-right: 1px solid currentColor; border-top: 1px solid currentColor;
             transform: rotate(45deg);
         }
         .viewer-counter {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 300;
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+            z-index: 10; font-size: 0.65rem; letter-spacing: 2px;
+            color: rgba(255,255,255,0.7); font-weight: 300;
         }
         .viewer-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 8px;
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 10; display: flex; gap: 8px;
         }
         .viewer-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
+            width: 4px; height: 4px; border-radius: 50%;
             background: rgba(255,255,255,0.35);
             transition: background 0.4s ease, transform 0.4s ease;
         }
@@ -231,7 +137,6 @@
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
         <div class="nav-links">
@@ -258,22 +163,10 @@
         <div class="info-left">
             <h3>Project Details</h3>
             <div class="project-details">
-                <div class="detail-item">
-                    <span>Category</span>
-                    <p>Commercial — Educational</p>
-                </div>
-                <div class="detail-item">
-                    <span>Location</span>
-                    <p>Muzaffarnagar, UP</p>
-                </div>
-                <div class="detail-item">
-                    <span>Status</span>
-                    <p>Completed</p>
-                </div>
-                <div class="detail-item">
-                    <span>Scope</span>
-                    <p>Architecture & Interiors</p>
-                </div>
+                <div class="detail-item"><span>Category</span><p>Commercial — Educational</p></div>
+                <div class="detail-item"><span>Location</span><p>Muzaffarnagar, UP</p></div>
+                <div class="detail-item"><span>Status</span><p>Completed</p></div>
+                <div class="detail-item"><span>Scope</span><p>Architecture & Interiors</p></div>
             </div>
         </div>
         <div class="info-right">
@@ -291,6 +184,7 @@
         <div class="viewer-slide"><img src="images/learning-courtyard/03.png" alt="The Learning Courtyard"></div>
         <div class="viewer-slide"><img src="images/learning-courtyard/04.png" alt="The Learning Courtyard"></div>
         <div class="viewer-slide"><img src="images/learning-courtyard/05.png" alt="The Learning Courtyard"></div>
+        <div class="viewer-slide"><img src="images/learning-courtyard/10.png" alt="The Learning Courtyard"></div>
         <div class="viewer-slide"><img src="images/learning-courtyard/06.png" alt="The Learning Courtyard"></div>
         <div class="viewer-slide"><img src="images/learning-courtyard/07.png" alt="The Learning Courtyard"></div>
         <div class="viewer-slide"><img src="images/learning-courtyard/08.png" alt="The Learning Courtyard"></div>
@@ -310,7 +204,7 @@
             </div>
         </div>
 
-        <div class="viewer-counter" id="counter">01 / 10</div>
+        <div class="viewer-counter" id="counter">01 / 11</div>
         <div class="viewer-dots" id="dots"></div>
     </div>
 
