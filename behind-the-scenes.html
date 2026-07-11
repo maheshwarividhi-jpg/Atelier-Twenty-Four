@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Scenes | Atelier Twenty Four</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <style>
+
+        body { background: #fff; }
+
+        /* ── Page Header ── */
+        .bts-header {
+            padding: 160px 7% 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #ece9e4;
+        }
+
+        .bts-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+        }
+
+        .bts-header h1 em {
+            font-style: italic;
+        }
+
+        .bts-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 0.3px;
+            margin: 0;
+            max-width: 520px;
+        }
+
+        /* ── Grid ── */
+        .bts-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 7% 120px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 56px 32px;
+        }
+
+        /* ── Card ── */
+        .bts-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .bts-card-image {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
+            background: #f0ede8;
+            margin-bottom: 20px;
+        }
+
+        .bts-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .bts-card:hover .bts-card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Placeholder when no image */
+        .bts-card-image.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bts-card-image.placeholder span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+
+        .bts-card-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        .bts-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.35;
+            margin: 0 0 10px 0;
+        }
+
+        .bts-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: #888;
+            line-height: 1.75;
+            margin: 0 0 14px 0;
+        }
+
+        .bts-read-more {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1px;
+            display: inline-block;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .bts-card:hover .bts-read-more {
+            color: #000;
+            border-color: #000;
+        }
+
+        /* ── Coming Soon Banner ── */
+        .bts-coming-soon {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 0 20px;
+            border-top: 1px solid #ece9e4;
+        }
+
+        .bts-coming-soon p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: #bbb;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .bts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .bts-header { padding: 130px 6% 48px; }
+            .bts-grid { grid-template-columns: 1fr; padding: 60px 6% 80px; gap: 48px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">People</a>
+            <a href="index.html#projects">Portfolio</a>
+            <a href="behind-the-scenes.html">Behind the Scenes</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ── HEADER ── -->
+    <div class="bts-header">
+        <h1>Behind the <em>Scenes.</em></h1>
+        <p>A closer look at how we work — the process, the materials, the decisions, and the moments in between.</p>
+    </div>
+
+    <!-- ── GRID ── -->
+    <div class="bts-grid">
+
+        <!-- CARD 1 — Placeholder -->
+        <div class="bts-card">
+            <div class="bts-card-image placeholder">
+                <span>Coming Soon</span>
+            </div>
+            <p class="bts-card-meta">Process — 2025</p>
+            <h2>On Materials & Making</h2>
+            <p>How we choose the stone, the wood, the finish — and why the material conversation starts on day one, not after the drawings are done.</p>
+            <span class="bts-read-more">Coming Soon</span>
+        </div>
+
+        <!-- CARD 2 — Placeholder -->
+        <div class="bts-card">
+            <div class="bts-card-image placeholder">
+                <span>Coming Soon</span>
+            </div>
+            <p class="bts-card-meta">Site Visit — 2025</p>
+            <h2>The Learning Courtyard — Under Construction</h2>
+            <p>A walk through the site before the finishes arrived. What the building looked like when it was still just walls and light.</p>
+            <span class="bts-read-more">Coming Soon</span>
+        </div>
+
+        <!-- CARD 3 — Placeholder -->
+        <div class="bts-card">
+            <div class="bts-card-image placeholder">
+                <span>Coming Soon</span>
+            </div>
+            <p class="bts-card-meta">Design Thinking — 2024</p>
+            <h2>Why We Work on Few Projects at a Time</h2>
+            <p>Deliberate restraint is not a limitation — it is the condition under which good work becomes possible. A note on how we choose what to take on.</p>
+            <span class="bts-read-more">Coming Soon</span>
+        </div>
+
+        <!-- Coming Soon row -->
+        <div class="bts-coming-soon">
+            <p>More stories coming soon</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/ayuushkkalra" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+                Instagram
+            </a>
+            <a href="https://in.pinterest.com/ateliertwentyfour" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" alt="Pinterest">
+                Pinterest
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
