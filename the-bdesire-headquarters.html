@@ -374,5 +374,41 @@
             if (e.key === 'ArrowLeft') changeImage(-1);
         });
     </script>
+
+    <!-- Hamburger Button -->
+    <button id="hamburgerBtn" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu">
+        <div id="mobileMenuInner">
+            <div id="mobileMenuHeader">
+                <a href="index.html" id="mobileMenuLogo">ATELIER TWENTY FOUR</a>
+                <button id="mobileCloseBtn" onclick="closeMobileMenu()">&#x2715;</button>
+            </div>
+            <div id="mobileMenuLinks">
+                <a href="about.html" onclick="closeMobileMenu()">People</a>
+                <a href="index.html#projects" onclick="closeMobileMenu()">Portfolio</a>
+                <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+                <a href="behind-the-scenes.html" onclick="closeMobileMenu()">Behind the Scenes</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('hamburgerBtn').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.body.style.overflow = '';
+            if (window.innerWidth <= 768) {
+                document.getElementById('hamburgerBtn').style.display = 'flex';
+            }
+        }
+    </script>
 </body>
 </html>
