@@ -427,3 +427,9 @@ footer {
         text-align: center !important;
     }
 }
+
+
+/* ── Thin line under nav ── */
+nav {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
