@@ -433,3 +433,12 @@ footer {
 nav {
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
+
+
+/* ── Bigger logo on desktop ── */
+@media (min-width: 769px) {
+    .logo {
+        font-size: 1.6rem !important;
+        letter-spacing: 8px !important;
+    }
+}
