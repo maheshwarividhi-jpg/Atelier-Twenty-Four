@@ -17,29 +17,67 @@ document.querySelectorAll('.reveal').forEach(el => {
     observer.observe(el);
 });
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+// Nav: becomes solid on scroll past hero
+(function () {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    function updateNav() {
+        if (window.scrollY > 60) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+})();
 
-// Hero Carousel — one image at a time, slides out left, next comes from right
+// Hero Carousel — slides out left, next comes from right, updates title/subtitle
 (function () {
     const slides = document.querySelectorAll('.carousel-slide');
     if (!slides.length) return;
 
+    const heroTitle    = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    const heroText     = document.getElementById('heroText');
+
     let current = 0;
     let animating = false;
 
-    // First slide visible, all others stacked off-screen to the right
+    // Position all slides
     slides.forEach((slide, i) => {
         slide.style.transition = 'none';
         slide.style.transform = i === 0 ? 'translateX(0%)' : 'translateX(100%)';
+        // Prevent default link navigation — we handle clicks manually
+        slide.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = this.getAttribute('href');
+        });
     });
+
+    function updateText(index) {
+        if (!heroTitle || !heroSubtitle) return;
+        const slide = slides[index];
+        const title = slide.getAttribute('data-title') || '';
+        const sub   = slide.getAttribute('data-subtitle') || '';
+        // Fade out
+        heroTitle.style.opacity = '0';
+        heroSubtitle.style.opacity = '0';
+        setTimeout(() => {
+            heroTitle.textContent    = title;
+            heroSubtitle.textContent = sub;
+            // Update hero link
+            if (heroText) {
+                heroText.onclick = function () {
+                    window.location.href = slide.getAttribute('href');
+                };
+                heroText.style.cursor = 'pointer';
+            }
+            // Fade in
+            heroTitle.style.opacity = '1';
+            heroSubtitle.style.opacity = '1';
+        }, 300);
+    }
 
     function nextSlide() {
         if (animating) return;
@@ -49,19 +87,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         current = (current + 1) % slides.length;
         const incoming = slides[current];
 
-        // Both move simultaneously — outgoing left, incoming from right, no gap
-        outgoing.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.18, 1)';
-        incoming.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.18, 1)';
-        outgoing.style.transform = 'translateX(-100%)';
-        incoming.style.transform = 'translateX(0%)';
+        outgoing.style.transition = 'transform 1.05s cubic-bezier(0.77, 0, 0.18, 1)';
+        incoming.style.transition = 'transform 1.05s cubic-bezier(0.77, 0, 0.18, 1)';
+        outgoing.style.transform  = 'translateX(-100%)';
+        incoming.style.transform  = 'translateX(0%)';
+
+        updateText(current);
 
         setTimeout(() => {
-            // Reset outgoing off-screen right, ready for its next turn
             outgoing.style.transition = 'none';
-            outgoing.style.transform = 'translateX(100%)';
+            outgoing.style.transform  = 'translateX(100%)';
             animating = false;
-        }, 1050);
+        }, 1100);
     }
+
+    // Set initial text
+    updateText(0);
 
     setInterval(nextSlide, 3500);
 })();

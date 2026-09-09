@@ -12,222 +12,344 @@
 
         /* ── Page Header ── */
         .bts-header {
-            padding: 160px 7% 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid #ece9e4;
+            padding: 160px 7% 80px;
+        }
+
+        .bts-header .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #bbb;
+            margin: 0 0 20px 0;
         }
 
         .bts-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-size: clamp(3rem, 6vw, 5.5rem);
             font-weight: 400;
-            line-height: 1.1;
+            line-height: 1.05;
             letter-spacing: -0.02em;
             color: #1a1a1a;
-            margin: 0 0 16px 0;
+            margin: 0 0 24px 0;
         }
 
-        .bts-header h1 em {
-            font-style: italic;
-        }
+        .bts-header h1 em { font-style: italic; }
 
         .bts-header p {
             font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 300;
-            color: #999;
-            letter-spacing: 0.3px;
+            color: #888;
+            max-width: 480px;
+            line-height: 1.8;
             margin: 0;
-            max-width: 520px;
         }
 
-        /* ── Grid ── */
-        .bts-grid {
-            max-width: 1200px;
+        /* ── Posts List ── */
+        .bts-list {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 7% 120px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 56px 32px;
+            padding: 0 7% 140px;
         }
 
-        /* ── Card ── */
-        .bts-card {
+        /* ── Single Post Row ── */
+        .bts-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 0;
+            border-top: 1px solid #ece9e4;
             text-decoration: none;
             color: inherit;
-            display: block;
+            cursor: pointer;
         }
 
-        .bts-card-image {
-            width: 100%;
-            aspect-ratio: 3 / 2;
+        .bts-post:last-child {
+            border-bottom: 1px solid #ece9e4;
+        }
+
+        /* Alternate image left/right */
+        .bts-post:nth-child(even) .bts-post-image {
+            order: 2;
+        }
+        .bts-post:nth-child(even) .bts-post-text {
+            order: 1;
+        }
+
+        /* ── Post Image ── */
+        .bts-post-image {
+            position: relative;
             overflow: hidden;
+            aspect-ratio: 4 / 3;
             background: #f0ede8;
-            margin-bottom: 20px;
         }
 
-        .bts-card-image img {
+        .bts-post-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+            will-change: transform;
         }
 
-        .bts-card:hover .bts-card-image img {
-            transform: scale(1.05);
+        .bts-post:hover .bts-post-image img {
+            transform: scale(1.07);
         }
 
-        /* Placeholder when no image */
-        .bts-card-image.placeholder {
+        /* Placeholder shimmer */
+        .bts-post-image.ph {
+            background: linear-gradient(135deg, #f0ede8 0%, #e8e3dd 50%, #f0ede8 100%);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bts-post-image .ph-label {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #bbb;
         }
 
-        .bts-card-image.placeholder span {
+        /* ── Post Text ── */
+        .bts-post-text {
+            padding: 0 20px;
+        }
+
+        .bts-post-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #bbb;
+            margin: 0 0 16px 0;
+        }
+
+        .bts-post-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 2vw, 1.9rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+            transition: opacity 0.2s;
+        }
+
+        .bts-post:hover .bts-post-text h2 {
+            opacity: 0.7;
+        }
+
+        .bts-post-text p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: #777;
+            line-height: 1.85;
+            margin: 0 0 24px 0;
+        }
+
+        .bts-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             font-family: 'Inter', sans-serif;
             font-size: 0.7rem;
+            font-weight: 400;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #333;
+            transition: gap 0.3s ease;
+        }
+
+        .bts-post:hover .bts-arrow {
+            gap: 20px;
+        }
+
+        .bts-arrow-line {
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: #333;
+            position: relative;
+            transition: width 0.3s ease;
+        }
+
+        .bts-post:hover .bts-arrow-line {
+            width: 48px;
+        }
+
+        .bts-arrow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 6px;
+            height: 6px;
+            border-right: 1px solid #333;
+            border-top: 1px solid #333;
+            transform: rotate(45deg);
+        }
+
+        /* ── Coming Soon ── */
+        .bts-more {
+            text-align: center;
+            padding: 80px 0 0;
+            border-top: 1px solid #ece9e4;
+        }
+
+        .bts-more p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #ccc;
         }
 
-        .bts-card-meta {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #bbb;
-            margin-bottom: 10px;
-        }
-
-        .bts-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: #1a1a1a;
-            line-height: 1.35;
-            margin: 0 0 10px 0;
-        }
-
-        .bts-card p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 300;
-            color: #888;
-            line-height: 1.75;
-            margin: 0 0 14px 0;
-        }
-
-        .bts-read-more {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #333;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 1px;
-            display: inline-block;
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        .bts-card:hover .bts-read-more {
-            color: #000;
-            border-color: #000;
-        }
-
-        /* ── Coming Soon Banner ── */
-        .bts-coming-soon {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 0 20px;
-            border-top: 1px solid #ece9e4;
-        }
-
-        .bts-coming-soon p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 300;
-            color: #bbb;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 0;
-        }
-
         /* ── Responsive ── */
-        @media (max-width: 900px) {
-            .bts-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 768px) {
+            .bts-header { padding: 130px 6% 60px; }
+            .bts-list { padding: 0 6% 100px; }
+            .bts-post {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 48px 0;
+            }
+            .bts-post:nth-child(even) .bts-post-image { order: 0; }
+            .bts-post:nth-child(even) .bts-post-text { order: 0; }
+            .bts-post-text { padding: 0; }
         }
 
-        @media (max-width: 600px) {
-            .bts-header { padding: 130px 6% 48px; }
-            .bts-grid { grid-template-columns: 1fr; padding: 60px 6% 80px; gap: 48px; }
+        /* ── Nav: 3-column centered ── */
+        nav {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            align-items: center !important;
+            padding: 28px 5% !important;
         }
-
+        .logo {
+            justify-self: center;
+            padding: 0 32px;
+            border-left: 1px solid rgba(0,0,0,0.12);
+            border-right: 1px solid rgba(0,0,0,0.12);
+            font-size: 0.85rem !important;
+        }
+        .nav-links-left { justify-self: start; display: flex; gap: 32px; }
+        .nav-links-right { justify-self: end; display: flex; gap: 32px; }
+        .nav-links a {
+            font-size: 0.78rem !important;
+            letter-spacing: 1.8px !important;
+            margin-left: 0 !important;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+        <nav>
+        <div class="nav-links nav-links-left">
+            <a href="about.html">People</a>
+            <a href="index.html#projects">Portfolio</a>
+        </div>
         <div class="logo">
             <a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a>
         </div>
-        <div class="nav-links">
-            <a href="about.html">People</a>
-            <a href="index.html#projects">Portfolio</a>
-            <a href="behind-the-scenes.html">Behind the Scenes</a>
+        <div class="nav-links nav-links-right">
             <a href="contact.html">Contact</a>
+            <a href="behind-the-scenes.html">Behind the Scenes</a>
         </div>
     </nav>
 
     <!-- ── HEADER ── -->
     <div class="bts-header">
+        <p class="eyebrow">Atelier Twenty Four</p>
         <h1>Behind the <em>Scenes.</em></h1>
-        <p>A closer look at how we work — the process, the materials, the decisions, and the moments in between.</p>
+        <p>A closer look at how we work — the process, the materials, the decisions, and the quiet moments between first sketch and final finish.</p>
     </div>
 
-    <!-- ── GRID ── -->
-    <div class="bts-grid">
+    <!-- ── POSTS ── -->
+    <div class="bts-list">
 
-        <!-- CARD 1 — Placeholder -->
-        <div class="bts-card">
-            <div class="bts-card-image placeholder">
-                <span>Coming Soon</span>
+        <!-- POST 1 -->
+        <a class="bts-post" href="#">
+            <div class="bts-post-image">
+                <img src="images/behind-the-scenes/bts-1.webp" alt="On Materials and Making">
             </div>
-            <p class="bts-card-meta">Process — 2025</p>
-            <h2>On Materials & Making</h2>
-            <p>How we choose the stone, the wood, the finish — and why the material conversation starts on day one, not after the drawings are done.</p>
-            <span class="bts-read-more">Coming Soon</span>
-        </div>
-
-        <!-- CARD 2 — Placeholder -->
-        <div class="bts-card">
-            <div class="bts-card-image placeholder">
-                <span>Coming Soon</span>
+            <div class="bts-post-text">
+                <p class="bts-post-meta">Process &mdash; 2025</p>
+                <h2>On Materials & Making</h2>
+                <p>How we choose the stone, the wood, the finish — and why the material conversation starts on day one, not after the drawings are done. A walk through our selection process.</p>
+                <span class="bts-arrow">
+                    <span class="bts-arrow-line"></span>
+                    Read More
+                </span>
             </div>
-            <p class="bts-card-meta">Site Visit — 2025</p>
-            <h2>The Learning Courtyard — Under Construction</h2>
-            <p>A walk through the site before the finishes arrived. What the building looked like when it was still just walls and light.</p>
-            <span class="bts-read-more">Coming Soon</span>
-        </div>
+        </a>
 
-        <!-- CARD 3 — Placeholder -->
-        <div class="bts-card">
-            <div class="bts-card-image placeholder">
-                <span>Coming Soon</span>
+        <!-- POST 2 -->
+        <a class="bts-post" href="#">
+            <div class="bts-post-image">
+                <img src="images/behind-the-scenes/bts-2.webp" alt="Studio Sessions">
             </div>
-            <p class="bts-card-meta">Design Thinking — 2024</p>
-            <h2>Why We Work on Few Projects at a Time</h2>
-            <p>Deliberate restraint is not a limitation — it is the condition under which good work becomes possible. A note on how we choose what to take on.</p>
-            <span class="bts-read-more">Coming Soon</span>
-        </div>
+            <div class="bts-post-text">
+                <p class="bts-post-meta">Studio &mdash; 2025</p>
+                <h2>Studio Sessions — Where Every Project Begins</h2>
+                <p>Before the drawings, before the site visit — there is the conversation. A look at how we work with clients in the early stages of a project, listening as much as designing.</p>
+                <span class="bts-arrow">
+                    <span class="bts-arrow-line"></span>
+                    Read More
+                </span>
+            </div>
+        </a>
 
-        <!-- Coming Soon row -->
-        <div class="bts-coming-soon">
+        <!-- POST 3 -->
+        <a class="bts-post" href="#">
+            <div class="bts-post-image">
+                <img src="images/behind-the-scenes/bts-3.webp" alt="Detail and Craft">
+            </div>
+            <div class="bts-post-text">
+                <p class="bts-post-meta">Craft &mdash; 2024</p>
+                <h2>The Detail That Goes Unnoticed — Until It Isn't There</h2>
+                <p>On the blue console, the flooring grid, the art selection — and why the objects in a space are never afterthoughts. They are part of the architecture.</p>
+                <span class="bts-arrow">
+                    <span class="bts-arrow-line"></span>
+                    Read More
+                </span>
+            </div>
+        </a>
+
+        <!-- POST 4 — still placeholder -->
+        <a class="bts-post" href="#">
+            <div class="bts-post-image ph">
+                <span class="ph-label">Image coming soon</span>
+            </div>
+            <div class="bts-post-text">
+                <p class="bts-post-meta">Design Thinking &mdash; 2024</p>
+                <h2>Why We Work on Few Projects at a Time</h2>
+                <p>Deliberate restraint is not a limitation. It is the condition under which good work becomes possible. A note on how we decide what to take on — and what to say no to.</p>
+                <span class="bts-arrow">
+                    <span class="bts-arrow-line"></span>
+                    Read More
+                </span>
+            </div>
+        </a>
+
+        <div class="bts-more">
             <p>More stories coming soon</p>
         </div>
 

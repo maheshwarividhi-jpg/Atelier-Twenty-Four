@@ -83,29 +83,114 @@
             scroll-margin-top: 100px;
         }
 
+        /* ── Nav: transparent over the hero, solid once scrolled past it ── */
+        nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            transition: background 0.35s ease, backdrop-filter 0.35s ease;
+        }
+
+        .nav-links-left { justify-self: start; }
+        .nav-links-right { justify-self: end; }
+
+        .logo {
+            justify-self: center;
+            padding: 0 32px;
+            border-left: 1px solid rgba(255,255,255,0.4);
+            border-right: 1px solid rgba(255,255,255,0.4);
+            transition: border-color 0.35s ease;
+        }
+
+        nav .logo,
+        nav .nav-links a {
+            color: #fff;
+            transition: color 0.35s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        nav.scrolled .logo,
+        nav.scrolled .nav-links a {
+            color: #111;
+        }
+
+        nav.scrolled .logo {
+            border-left-color: rgba(0,0,0,0.15);
+            border-right-color: rgba(0,0,0,0.15);
+        }
+
+        /* ── Hero Text: small, centered, like a caption ── */
+        .hero-text {
+            position: absolute;
+            left: 50%;
+            bottom: 90px;
+            transform: translateX(-50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5%;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+            line-height: 1.2;
+            color: #fff;
+            margin: 0 0 16px 0;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-divider {
+            width: 36px;
+            height: 1px;
+            background: rgba(255,255,255,0.55);
+            margin: 0 0 16px 0;
+        }
+
+        .hero-text p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+            max-width: none;
+            margin: 0;
+            text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+            transition: opacity 0.4s ease;
+        }
+
         @media (max-width: 860px) {
             .intro-section { padding: 70px 6% 80px; }
             .intro-inner { grid-template-columns: 1fr; gap: 44px; }
         }
 
-        @media (max-width: 600px) {
-            .hero-text h1 {
-                font-size: clamp(2rem, 10vw, 2.8rem) !important;
-                white-space: normal !important;
-            }
-            .hero-text p {
-                font-size: clamp(0.85rem, 4vw, 1rem) !important;
-            }
-        }
-
         @media (max-width: 640px) {
-            .hero-text h1 {
-                font-size: clamp(2rem, 8vw, 3rem) !important;
-                white-space: normal !important;
+            nav {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                row-gap: 10px;
+                padding: 20px 6%;
             }
-            .hero-text p {
-                font-size: clamp(0.85rem, 3.5vw, 1.1rem) !important;
-            }
+            .nav-links-left, .nav-links-right { justify-self: center; }
+            .logo { border: none; padding: 0; }
+            .hero-text { bottom: 60px; }
+            .hero-text h1 { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
+            .hero-text p { font-size: 0.6rem; letter-spacing: 2px; }
             .logo {
                 font-size: 0.6rem !important;
                 letter-spacing: 2px !important;
@@ -117,15 +202,54 @@
             }
         }
 
+        /* ── Nav: 3-column centered ── */
+        nav {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            align-items: center !important;
+            padding: 28px 5% !important;
+        }
+        .logo {
+            justify-self: center;
+            padding: 0 32px;
+            border-left: 1px solid rgba(0,0,0,0.12);
+            border-right: 1px solid rgba(0,0,0,0.12);
+            font-size: 0.85rem !important;
+        }
+        .nav-links-left { justify-self: start; display: flex; gap: 32px; }
+        .nav-links-right { justify-self: end; display: flex; gap: 32px; }
+        .nav-links a {
+            font-size: 0.78rem !important;
+            letter-spacing: 1.8px !important;
+            margin-left: 0 !important;
+        }
+        /* Carousel slides */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: translateX(100%);
+            transition: none;
+            text-decoration: none;
+            display: block;
+        }
+        .carousel-slide.active {
+            transform: translateX(0%);
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ATELIER TWENTY FOUR</div>
-        <div class="nav-links">
+        <div class="nav-links nav-links-left">
             <a href="about.html">People</a>
             <a href="#projects">Portfolio</a>
+        </div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a>
+        </div>
+        <div class="nav-links nav-links-right">
             <a href="contact.html">Contact</a>
             <a href="behind-the-scenes.html">Behind the Scenes</a>
         </div>
@@ -133,19 +257,47 @@
 
     <header class="hero">
         <div class="carousel-bg">
-            <div class="carousel-slide active" style="background-image:url('images/carousel/IMG_6261-HDR-2.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/IMG_0194-HDR.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/FROM_CAFETERIA_1.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/IMG_6337-HDR.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/LIVING_ROOM_1_-_Photo_2_-_Photo.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/untitled-2299.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/10.webp')"></div>
-            <div class="carousel-slide" style="background-image:url('images/carousel/1.webp')"></div>
+            <a class="carousel-slide active"
+               href="the-courtyard-house.html"
+               style="background-image:url('images/carousel/IMG_6261-HDR-2.webp')"
+               data-title="The Courtyard House"
+               data-subtitle="Where interior and landscape meet"></a>
+
+            <a class="carousel-slide"
+               href="6-dover-park.html"
+               style="background-image:url('images/carousel/IMG_0194-HDR.webp')"
+               data-title="Penthouse Apartment"
+               data-subtitle="A calm, light-filled urban retreat"></a>
+
+            <a class="carousel-slide"
+               href="the-bdesire-headquarters.html"
+               style="background-image:url('images/carousel/FROM_CAFETERIA_1.webp')"
+               data-title="Corporate Office"
+               data-subtitle="Minimal design for modern workplaces"></a>
+
+            <a class="carousel-slide"
+               href="the-minimalist-penthouse.html"
+               style="background-image:url('images/carousel/LIVING_ROOM_1_-_Photo_2_-_Photo.webp')"
+               data-title="Minimal Residence"
+               data-subtitle="Calm, considered, quietly refined"></a>
+
+            <a class="carousel-slide"
+               href="learning-courtyard.html"
+               style="background-image:url('images/carousel/10.webp')"
+               data-title="The Learning Courtyard"
+               data-subtitle="A school built around a central courtyard"></a>
+
+            <a class="carousel-slide"
+               href="a-house-of-frames.html"
+               style="background-image:url('images/carousel/1.webp')"
+               data-title="A House of Frames"
+               data-subtitle="A quiet home turned inward"></a>
         </div>
-        <div class="carousel-overlay"></div>
-        <div class="hero-text" style="position:absolute; bottom: 60px; left: 7%; top: auto; transform: none; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
-            <h1 style="color: #444; white-space: nowrap; margin: 0; padding: 0; display: block;">Curated <em>Spaces.</em></h1>
-            <p style="color: #444; margin: 0; padding: 0; display: block;">Defined by Purpose.</p>
+
+        <div class="hero-text" id="heroText">
+            <h1 id="heroTitle">The Courtyard House</h1>
+            <div class="hero-divider"></div>
+            <p id="heroSubtitle">Where interior and landscape meet</p>
         </div>
     </header>
 

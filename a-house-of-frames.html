@@ -229,16 +229,42 @@
             .image-viewer { height: 70vh; }
             .viewer-prev-label span, .viewer-next-label span { display: none; }
         }
+        /* ── Nav: 3-column centered ── */
+        nav {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            align-items: center !important;
+            padding: 28px 5% !important;
+        }
+        .logo {
+            justify-self: center;
+            padding: 0 32px;
+            border-left: 1px solid rgba(0,0,0,0.12);
+            border-right: 1px solid rgba(0,0,0,0.12);
+            font-size: 0.85rem !important;
+        }
+        .nav-links-left { justify-self: start; display: flex; gap: 32px; }
+        .nav-links-right { justify-self: end; display: flex; gap: 32px; }
+        .nav-links a {
+            font-size: 0.78rem !important;
+            letter-spacing: 1.8px !important;
+            margin-left: 0 !important;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ATELIER TWENTY FOUR</a></div>
-        <div class="nav-links">
+        <nav>
+        <div class="nav-links nav-links-left">
             <a href="about.html">People</a>
-            <a href="index.html#projects">Projects</a>
+            <a href="index.html#projects">Portfolio</a>
+        </div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;color:inherit;font-family:inherit;letter-spacing:inherit;">ATELIER TWENTY FOUR</a>
+        </div>
+        <div class="nav-links nav-links-right">
             <a href="contact.html">Contact</a>
+            <a href="behind-the-scenes.html">Behind the Scenes</a>
         </div>
     </nav>
 
