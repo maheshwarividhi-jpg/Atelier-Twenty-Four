@@ -237,11 +237,169 @@
         .carousel-slide.active {
             transform: translateX(0%);
         }
+
+        /* ── Mobile Nav ── */
+        @media (max-width: 768px) {
+            nav {
+                grid-template-columns: 1fr auto !important;
+                padding: 20px 5% !important;
+            }
+            nav .nav-links-left { display: none !important; }
+            nav .nav-links-right { display: none !important; }
+            nav .logo {
+                border: none !important;
+                padding: 0 !important;
+                justify-self: start !important;
+            }
+            .hamburger {
+                display: flex !important;
+            }
+            .mobile-menu.open {
+                display: flex !important;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #fff;
+            z-index: 999;
+            padding: 40px 8%;
+        }
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #ece9e4;
+            margin-bottom: 48px;
+        }
+
+        .mobile-menu-logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .mobile-close {
+            position: fixed;
+            top: 22px;
+            right: 5%;
+            z-index: 10000;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            padding: 8px;
+        }
+
+        .mobile-close-btn {
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+            font-family: inherit;
+            transition: color 0.2s;
+            padding: 4px;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-links a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #444;
+            text-decoration: none;
+            padding: 22px 0;
+            border-bottom: 1px solid #ece9e4;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .mobile-menu-links a:hover {
+            color: #000;
+            padding-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 5px !important;
+                cursor: pointer !important;
+                z-index: 1002 !important;
+                background: none !important;
+                border: none !important;
+                padding: 4px !important;
+                justify-self: end !important;
+                grid-column: 2 !important;
+            }
+            .hamburger span {
+                display: block !important;
+                width: 24px !important;
+                height: 2px !important;
+                background: #fff !important;
+                transition: all 0.3s ease !important;
+            }
+            nav.scrolled .hamburger span {
+                background: #1a1a1a !important;
+            }
+            nav .nav-links-left,
+            nav .nav-links-right {
+                display: none !important;
+            }
+            nav {
+                grid-template-columns: 1fr auto !important;
+                padding: 20px 5% !important;
+            }
+            nav .logo {
+                border: none !important;
+                padding: 0 !important;
+                justify-self: center !important;
+                grid-column: 1 !important;
+                font-size: 0.75rem !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+        <nav>
         <div class="nav-links nav-links-left">
             <a href="about.html">People</a>
             <a href="#projects">Portfolio</a>
@@ -414,6 +572,177 @@
         </div>
     </footer>
 
+
+            <div class="mobile-menu-links">
+            <a href="about.html" onclick="closeMobileMenu()">People</a>
+            <a href="index.html#projects" onclick="closeMobileMenu()">Portfolio</a>
+            <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+            <a href="behind-the-scenes.html" onclick="closeMobileMenu()">Behind the Scenes</a>
+        </div>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu">
+        <div id="mobileMenuInner">
+            <div id="mobileMenuHeader">
+                <span>ATELIER TWENTY FOUR</span>
+                <button id="mobileCloseBtn" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+            </div>
+            <nav id="mobileMenuLinks">
+                <a href="about.html" onclick="closeMobileMenu()">People</a>
+                <a href="index.html#projects" onclick="closeMobileMenu()">Portfolio</a>
+                <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+                <a href="behind-the-scenes.html" onclick="closeMobileMenu()">Behind the Scenes</a>
+            </nav>
+        </div>
+    </div>
+
+    <style>
+        #hamburgerBtn {
+            display: none;
+            position: fixed;
+            top: 22px;
+            right: 5%;
+            z-index: 1100;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            padding: 6px;
+        }
+        #hamburgerBtn span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #fff;
+            transition: background 0.3s;
+        }
+        #hamburgerBtn.scrolled span { background: #1a1a1a; }
+
+        #mobileMenu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        #mobileMenu.open { display: block; }
+
+        #mobileMenuInner {
+            padding: 32px 8%;
+        }
+
+        #mobileMenuHeader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #ece9e4;
+            margin-bottom: 40px;
+        }
+
+        #mobileMenuHeader span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+        }
+
+        #mobileCloseBtn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            color: #888;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 2100;
+        }
+        #mobileCloseBtn:hover { color: #000; }
+
+        #mobileMenuLinks {
+            display: flex;
+            flex-direction: column;
+            position: static;
+            width: auto;
+            background: none;
+            padding: 0;
+            grid-template-columns: none;
+        }
+
+        #mobileMenuLinks a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #444;
+            text-decoration: none;
+            padding: 22px 0;
+            border-bottom: 1px solid #ece9e4;
+            transition: color 0.2s, padding-left 0.2s;
+            display: block;
+            margin-left: 0 !important;
+            opacity: 1 !important;
+        }
+        #mobileMenuLinks a:hover { color: #000; padding-left: 8px; }
+
+        @media (max-width: 768px) {
+            #hamburgerBtn { display: flex; }
+            nav .nav-links-left,
+            nav .nav-links-right { display: none !important; }
+            nav {
+                grid-template-columns: 1fr !important;
+                justify-items: center !important;
+                padding: 20px 5% !important;
+            }
+            nav .logo {
+                border: none !important;
+                padding: 0 !important;
+                justify-self: center !important;
+                font-size: 0.72rem !important;
+            }
+        }
+    </style>
+
     <script src="script.js"></script>
+    <script>
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('hamburgerBtn').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.body.style.overflow = '';
+            if (window.innerWidth <= 768) {
+                document.getElementById('hamburgerBtn').style.display = 'flex';
+            }
+        }
+        // Hamburger color on scroll
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('hamburgerBtn');
+            if (window.scrollY > 80) {
+                btn.classList.add('scrolled');
+            } else {
+                btn.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
